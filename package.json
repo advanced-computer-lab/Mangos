@@ -1,0 +1,30 @@
+{
+  "name": "mangos",
+  "version": "1.0.0",
+  "description": "ACL project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/advanced-computer-lab/Mangos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/advanced-computer-lab/Mangos/issues"
+  },
+  "homepage": "https://github.com/advanced-computer-lab/Mangos#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "validation": "0.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
