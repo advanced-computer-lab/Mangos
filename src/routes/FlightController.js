@@ -3,19 +3,19 @@ const router = express.Router();
 
 const Flight = require('../../models/Flight');
 
-router.get('/test', (req, res) => res.send('book route testing!'));
+router.get('/test', (req, res) => res.send('flight route testing!'));
 
 router.get('/', (req, res) => {
   Flight.find()
     .then(flights => res.json(flights))
-    .catch(err => res.status(404).json({ noflightfound: 'No Books found' }));
+    .catch(err => res.status(404).json({ noflightfound: 'No flights found' }));
 });
 
 
 router.get('/:id', (req, res) => {
   Flight.findById(req.params.id)
     .then(flight => res.json(flight))
-    .catch(err => res.status(404).json({ noflightfound: 'No Book found' }));
+    .catch(err => res.status(404).json({ noflightfound: 'No flight found' }));
 });
 
 router.post('/', (req, res) => {

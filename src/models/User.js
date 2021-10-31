@@ -5,41 +5,41 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-    Password: {
+  Password: {
     type: String,
     required: true
   },
-    FirstName: {
+  FirstName: {
     type: String,
     required: true
   },
-    LastName: {
+  LastName: {
     type: String,
     required: true
   },
-    HomeAddress: {
+  HomeAddress: {
     type: String,
     required: true
   },
-    CountryCode: {
+  CountryCode: {
     type: Number,
     required: true
   },
-    PhoneNumber: {
+  PhoneNumber: {
     type: Array,
     required: true
   },
-    Email: {
+  Email: {
     type: String,
     required: true
   },
-    PassportNumber: {
+  PassportNumber: {
     type: Number,
     required: true
   },
-    isAdmin: {
+  isAdmin: {
     type: Boolean,
-    required: true
+    required: false
 }
 });
 const User = mongoose.model('user', UserSchema);
