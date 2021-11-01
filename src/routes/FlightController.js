@@ -1,40 +1,59 @@
-const express = require('express');
-const router = express.Router();
+// #Task route solution
+const Flight = require('../models/Flight');
+exports.addFlight = (req, res) => {
 
-const Flight = require('../../models/Flight');
+    const flight = new Flight(req.body)
 
-router.get('/test', (req, res) => res.send('flight route testing!'));
+    flight.save()
+      .then(result => {
+        res.send(result);
+        console.log("added");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+// getting all the users
 
-router.get('/', (req, res) => {
-  Flight.find()
-    .then(flights => res.json(flights))
-    .catch(err => res.status(404).json({ noflightfound: 'No flights found' }));
-});
+exports.viewFlights = (req, res) => {
+    Flight.find({})
+      .then(result => {
+        res.send(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    };
 
+    exports.getFlight = (req, res) => {
+      Flight.find({Name:req.params.name})
+        .then(result => {
+          res.send(result);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    };
 
-router.get('/:id', (req, res) => {
-  Flight.findById(req.params.id)
-    .then(flight => res.json(flight))
-    .catch(err => res.status(404).json({ noflightfound: 'No flight found' }));
-});
+    exports.updateFlight = (req,res)=>{
+      Flight.findByIdAndUpdate(req.params.id,req.body).then(result =>{
 
-router.post('/', (req, res) => {
-  Flight.create(req.body)
-    .then(flight => res.json({ msg: 'flight added successfully' }))
-    .catch(err => res.status(400).json({ error: 'Unable to add this flight' }));
-  console.log("data entered");
-});
+          res.status(200).send("Flight updated ");
+          console.log('The Flight is Updated successfully !');
+      }).catch(err => {
+          console.log(err);
+        });
 
-router.put('/:id', (req, res) => {
-  Flight.findByIdAndUpdate(req.params.id, req.body)
-    .then(flight => res.json({ msg: 'Updated successfully' }))
-    .catch(err =>
-      res.status(400).json({ error: 'Unable to update the Database' })
-    );
-});
+    };
 
-router.delete('/:id', (req, res) => {
-  Flight.findByIdAndRemove(req.params.id, req.body)
-    .then(flight => res.json({ mgs: 'Flight entry deleted successfully' }))
-    .catch(err => res.status(404).json({ error: 'No such a flight' }));
-});
+    //Deleting an existing user
+    exports.deleteFlight = (req,res)=>{
+      Flight.findByIdAndRemove(req.params.id).then(result =>{
+
+          res.status(200).send("Flight Deleted ");
+          console.log("The Flight is deleted successfully !");
+      }).catch(err => {
+          console.log(err);
+        });
+
+    };

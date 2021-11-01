@@ -4,6 +4,9 @@ import './App.css';
 
 import CreateUser from './components/CreateUser';
 import CreateFlight from './components/CreateFlight';
+import Home from './components/Home';
+import admin from './components/Admin';
+
 
 
 class App extends Component {
@@ -11,8 +14,12 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path='/SignUp' component={CreateUser} />
-          <Route path='/CreateFlight' component={CreateFlight} />
+          
+          <Route path='/SignUp' component={CreateUser} />
+          <Route path='/AddFlight' component={CreateFlight} />
+          <Route path='/admin' component={admin} />
+          <Route path='/' component={Home} />
+         
           
         </div>
       </Router>

@@ -83,8 +83,6 @@ class CreateUser extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                <br />
-
                 <div className='form-group'>
                   <input
                     type='password'

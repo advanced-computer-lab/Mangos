@@ -10,7 +10,7 @@ const FlightSchema = new mongoose.Schema({
     required: true
   },
     FlightDate: {
-    type: Date,
+    type: String,
     required: true
   },
     Cabin: {
