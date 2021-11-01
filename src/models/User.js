@@ -36,11 +36,7 @@ const UserSchema = new mongoose.Schema({
   PassportNumber: {
     type: Number,
     required: true
-  },
-  isAdmin: {
-    type: Boolean,
-    required: false
-}
+  }
 });
 const User = mongoose.model('user', UserSchema);
 module.exports = User;

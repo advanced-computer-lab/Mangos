@@ -87,7 +87,7 @@ class CreateUser extends Component {
 
                 <div className='form-group'>
                   <input
-                    type='text'
+                    type='password'
                     placeholder='Password'
                     name='Password'
                     className='form-control'
@@ -149,8 +149,8 @@ class CreateUser extends Component {
                   />
                 </div>
                 <div className='form-group'>
-                  <input
-                    type='text'
+                  <input                 
+                    type='email'
                     placeholder='Email'
                     name='Email'
                     className='form-control'
