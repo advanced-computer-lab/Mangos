@@ -5,15 +5,15 @@ const FlightSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-    to: {
+  to: {
     type: String,
     required: true
   },
-    FlightDate: {
+  FlightDate: {
     type: String,
     required: true
   },
-    Cabin: {
+  Cabin: {
     type: String,
     required: true
   },

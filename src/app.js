@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
+
 var cors = require('cors');
 const userController = require('./routes/userController');
 
@@ -20,6 +21,8 @@ app.use(express.json({ extended: false }));
 
 
 app.get('/', (req, res) => res.send('Hello world!'));
+app.get('/Viewflights', flightController.viewFlights);
+
 
 
 

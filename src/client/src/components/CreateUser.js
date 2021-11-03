@@ -54,7 +54,6 @@ class CreateUser extends Component {
             PassportNumber:''
         })
         this.props.history.push('/');
-        console.log("ez");
       })
       .catch(err => {
         console.log("Error in CreateUser!");

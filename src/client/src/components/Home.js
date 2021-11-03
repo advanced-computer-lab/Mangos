@@ -4,12 +4,14 @@ import '../App.css';
 import axios from 'axios';
 
 
-class Home extends Component {
-    render(){
-        return(
-        <p>hello</p>
-        );
-    }
+const Home = () => {
+    return (
+        
+        <div>
+            <h1>Home</h1>
+        </div>
+    )
+    
 }
 
 export default Home;
