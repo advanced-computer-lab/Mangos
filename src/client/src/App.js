@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
-import CreateUser from './components/CreateUser';
 import CreateFlight from './components/CreateFlight';
-import JsonDataDisplay from './components/ShowAllFlights';
-import Home from './components/Home';
-import admin from './components/Admin';
-import Navbar  from './components/Nav/index'
+import ShowFlightsList from './components/ShowFlightsList';
 
-
+import ShowFlightDetails from './components/ShowFlightDetails';
+import UpdateFlightInfo from './components/UpdateFlightInfo';
 
 class App extends Component {
   render() {
     return (
-      
       <Router>
-        <Navbar />
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/SignUp' exact component={CreateUser} />
-          <Route path='/ShowAllFlights' exact component={JsonDataDisplay} />
-        </Switch>
+        <div>
+          <Route exact path='/' component={ShowFlightsList} />
+          <Route path='/create-flight' component={CreateFlight} />
+          <Route path='/edit-flight/:id' component={UpdateFlightInfo} />
+          <Route path='/show-flight/:id' component={ShowFlightDetails} />
+        </div>
       </Router>
-      
     );
   }
 }

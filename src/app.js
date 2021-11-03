@@ -2,10 +2,9 @@ const express = require('express');
 const connectDB = require('./config/db');
 
 var cors = require('cors');
-const userController = require('./routes/userController');
 
-
-const flightController = require('./routes/FlightController');
+const userController = require('./routes/api/userController');
+const flightController = require('./routes/api/FlightController');
 
 const Flight = require('./models/Flight');
 const User = require('./models/User');
@@ -21,13 +20,11 @@ app.use(express.json({ extended: false }));
 
 
 app.get('/', (req, res) => res.send('Hello world!'));
-app.get('/Viewflights', flightController.viewFlights);
+
+app.use('/api/FlightController', flightController);
+app.use('/api/userController', userController);
 
 
-
-
-app.post('/AddFlight', flightController.addFlight)
-app.post('/SignUp', userController.addUser)
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
 

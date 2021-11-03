@@ -32,7 +32,7 @@ class CreateFlight extends Component {
     };
 
     axios
-      .post('http://localhost:8000/AddFlight', data)
+      .post('http://localhost:8000/api/FlightController', data)
       .then(res => {
         this.setState({
             from: '',
@@ -54,6 +54,12 @@ class CreateFlight extends Component {
       <div className="CreateFlight">
         <div className="container">
           <div className="row">
+            <div className="col-md-8 m-auto">
+              <br />
+              <Link to="/" className="btn btn-outline-warning float-left">
+                  Show Flight List
+              </Link>
+            </div>
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Add Flight</h1>
               <p className="lead text-center">

@@ -22,5 +22,6 @@ const FlightSchema = new mongoose.Schema({
     required: true
   }
 });
-const Flight = mongoose.model('flight', FlightSchema);
-module.exports = Flight;
+
+
+module.exports = Flight = mongoose.model('flight', FlightSchema);;
