@@ -7,14 +7,21 @@ const FlightCard = (props) => {
 
     return(
         <div className="card-container">
-            <img src="https://commapress.co.uk/books/the-book-of-cairo/cairo-provisional-v3/image%2Fspan3" alt="" />
             <div className="desc">
                 <h2>
                     <Link to={`/show-flight/${flight._id}`}>
-                        {flight.from}
+                        Update/Delete
                     </Link>
                 </h2>
-                <h3>{flight.FlightDate}</h3>
+                <h3>Flight Number: {flight.flightnumber}</h3>
+                <h3>Departure time: {flight.departuretime}</h3>
+                <h3>Arrival time: {flight.arrivaltime}</h3>
+                <h3>Airport: {flight.airport}</h3>
+                <h3>From: {flight.from}</h3>
+                <h3>To: {flight.to}</h3>
+                <h3>Economy seats Available :{flight.Economyseats}</h3>
+                <h3>Business seats Available :{flight.Businessseats}</h3>
+                <h3>First seats Available :{flight.Firstclassseats}</h3>
             </div>
         </div>
     )

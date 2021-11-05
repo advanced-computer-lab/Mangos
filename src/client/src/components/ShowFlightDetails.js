@@ -54,28 +54,48 @@ class ShowFlightDetails extends Component {
         <tbody>
           <tr>
             <th scope="row">1</th>
+            <td>Flight Number</td>
+            <td>{ flight.flightnumber }</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Departure time</td>
+            <td>{ flight.departuretime }</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Arrival time</td>
+            <td>{ flight.arrivaltime }</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Airport</td>
+            <td>{ flight.airport }</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
             <td>From</td>
             <td>{ flight.from }</td>
           </tr>
           <tr>
-            <th scope="row">2</th>
+            <th scope="row">6</th>
             <td>To</td>
             <td>{ flight.to }</td>
           </tr>
           <tr>
-            <th scope="row">3</th>
-            <td>Flight Date</td>
-            <td>{ flight.FlightDate }</td>
+            <th scope="row">7</th>
+            <td>Economy seats Available</td>
+            <td>{ flight.Economyseats }</td>
           </tr>
           <tr>
-            <th scope="row">4</th>
-            <td>Cabin</td>
-            <td>{ flight.Cabin }</td>
+            <th scope="row">8</th>
+            <td>Business seats Available</td>
+            <td>{ flight.Businessseats }</td>
           </tr>
           <tr>
-            <th scope="row">5</th>
-            <td>seats Available</td>
-            <td>{ flight.seatsAvailable }</td>
+            <th scope="row">9</th>
+            <td>First seats Available</td>
+            <td>{ flight.Firstclassseats }</td>
           </tr>
         </tbody>
       </table>

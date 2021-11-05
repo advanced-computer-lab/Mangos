@@ -7,26 +7,33 @@ class UpdateFlightInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        flightnumber: '',
+        departuretime: '',
+        arrivaltime: '',
+        airport: '',
         from: '',
         to:'',
-        FlightDate:'',
-        Cabin:'',
-        seatsAvailable:''
+        //FlightDate:'',
+        Economyseats:'',
+        Businessseats:'',
+        Firstclassseats:''
     };
   }
 
   componentDidMount() {
-    // console.log("Print id: " + this.props.match.params.id);
     axios
       .get('http://localhost:8000/api/FlightController/'+this.props.match.params.id)
       .then(res => {
-        // this.setState({...this.state, book: res.data})
         this.setState({
-            from: res.data.from,
-            to: res.data.to,
-            FlightDate: res.data.FlightDate,
-            Cabin: res.data.Cabin,
-            seatsAvailable: res.data.seatsAvailable
+          flightnumber: res.data.flightnumber,
+          departuretime: res.data.departuretime,
+          arrivaltime: res.data.arrivaltime,
+          airport: res.data.airport,
+          from: res.data.from,
+          to: res.data.to,
+          Economyseats: res.data.Economyseats,
+          Businessseats: res.data.Businessseats,
+          Firstclassseats: res.data.Firstclassseats
         })
       })
       .catch(err => {
@@ -42,11 +49,16 @@ class UpdateFlightInfo extends Component {
     e.preventDefault();
 
     const data = {
+        flightnumber: this.state.flightnumber,
+        departuretime: this.state.departuretime,
+        arrivaltime: this.state.arrivaltime,
+        airport: this.state.airport,
         from: this.state.from,
-        to: this.state.to,
-        FlightDate: this.state.FlightDate,
-        Cabin: this.state.Cabin,
-        seatsAvailable: this.state.seatsAvailable
+        to:this.state.to,
+        //FlightDate:this.state.FlightDate,
+        Economyseats:this.state.Economyseats,
+        Businessseats:this.state.Businessseats,
+        Firstclassseats:this.state.Firstclassseats
     };
 
     axios
@@ -67,7 +79,7 @@ class UpdateFlightInfo extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <br />
-              <Link to="/" className="btn btn-outline-warning float-left">
+              <Link to="/show-flights" className="btn btn-outline-warning float-left">
                   Show Flight List
               </Link>
             </div>
@@ -82,7 +94,55 @@ class UpdateFlightInfo extends Component {
           <div className="col-md-8 m-auto">
           <form noValidate onSubmit={this.onSubmit}>
             <div className='form-group'>
-              <label htmlFor="title">From</label>
+              <label htmlFor="Flightnumber">Flightnumber</label>
+              <input
+                type='text'
+                placeholder='Flightnumber'
+                name='flightnumber'
+                className='form-control'
+                value={this.state.flightnumber}
+                onChange={this.onChange}
+              />
+            </div>
+            <br />
+            <div className='form-group'>
+              <label htmlFor="Departuretime">Departuretime</label>
+              <input
+                type='Date'
+                placeholder='Departuretime'
+                name='departuretime'
+                className='form-control'
+                value={this.state.departuretime}
+                onChange={this.onChange}
+              />
+            </div>
+            <br />
+            <div className='form-group'>
+              <label htmlFor="Arrivaltime">Arrivaltime</label>
+              <input
+                type='Date'
+                placeholder='Arrivaltime'
+                name='arrivaltime'
+                className='form-control'
+                value={this.state.arrivaltime}
+                onChange={this.onChange}
+              />
+            </div>
+            <br />            
+            <div className='form-group'>
+              <label htmlFor="airport">Airport</label>
+              <input
+                type='text'
+                placeholder='Airport'
+                name='airport'
+                className='form-control'
+                value={this.state.airport}
+                onChange={this.onChange}
+              />
+            </div>
+            <br />
+            <div className='form-group'>
+              <label htmlFor="from">From</label>
               <input
                 type='text'
                 placeholder='from'
@@ -95,10 +155,10 @@ class UpdateFlightInfo extends Component {
             <br />
 
             <div className='form-group'>
-            <label htmlFor="isbn">To</label>
+            <label htmlFor="to">To</label>
               <input
                 type='text'
-                placeholder='To'
+                placeholder='to'
                 name='to'
                 className='form-control'
                 value={this.state.to}
@@ -107,37 +167,35 @@ class UpdateFlightInfo extends Component {
             </div>
 
             <div className='form-group'>
-            <label htmlFor="author">Flight Date</label>
+            <label htmlFor="Economyseats">number of Economy seats</label>
               <input
                 type='text'
-                placeholder='FlightDate'
-                name='FlightDate'
+                placeholder='number of Economy seats'
+                name='Economyseats'
                 className='form-control'
-                value={this.state.FlightDate}
+                value={this.state.Economyseats}
                 onChange={this.onChange}
               />
             </div>
-
             <div className='form-group'>
-            <label htmlFor="description">Cabin</label>
+            <label htmlFor="Businessseats">number of Business class seats</label>
               <input
                 type='text'
-                placeholder='Cabin'
-                name='Cabin'
+                placeholder='number of Business class seats'
+                name='Businessseats'
                 className='form-control'
-                value={this.state.Cabin}
+                value={this.state.Businessseats}
                 onChange={this.onChange}
               />
             </div>
-
             <div className='form-group'>
-            <label htmlFor="published_date">seats Available</label>
+            <label htmlFor="Firstclassseats">number of First class seats</label>
               <input
                 type='text'
-                placeholder='seatsAvailable'
-                name='seatsAvailable'
+                placeholder='number of First class seats'
+                name='Firstclassseats'
                 className='form-control'
-                value={this.state.seatsAvailable}
+                value={this.state.Firstclassseats}
                 onChange={this.onChange}
               />
             </div>

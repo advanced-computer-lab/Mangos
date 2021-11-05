@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from './search';
 import {
     Nav,
     NavLink,
@@ -8,30 +9,26 @@ import {
     NavBtn
 }from './NavbarElements';
 
+
 const Navbar = () => {
     return(
         <>
             <Nav>
-                <NavLink to="/">
+                <NavLink to="/Admin">
                     <h1>Logo</h1>
                 </NavLink>
+                <Search />
                 <Bars />
                 <NavMenu>
-                    <NavLink to="/SearchFlights" activestyle>
-                        SearchFlights
-                    </NavLink>
-                    <NavLink to="/ShowAllFlights" activestyle>
+                    <NavLink to="/show-flights" activestyle>
                         ShowAllFlights
                     </NavLink>
-                    <NavLink to='/SignUp' activestyle>
-                        SignUp
+                    <NavLink to="/create-flight" activestyle>
+                        Add flight
                     </NavLink>
+                    
                 </NavMenu>
-                <NavBtn>
-                    <NavBtnLink to="/SignIn" activestyle>
-                        SignIn
-                    </NavBtnLink>
-                </NavBtn>
+                
             </Nav>
         </>
     );
