@@ -27,7 +27,7 @@ class CreateFlight extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
+    //
     const data = {
         flightnumber: this.state.flightnumber,
         departuretime: this.state.departuretime,
@@ -81,6 +81,7 @@ class CreateFlight extends Component {
               </p>
 
               <form noValidate onSubmit={this.onSubmit}>
+                <div>Flight Number: </div>
               <div className='form-group'>
                   <input
                     type='text'
@@ -91,10 +92,10 @@ class CreateFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-
+                <div>Departure Time: </div>
                 <div className='form-group'>
                   <input
-                    type='Date'
+                    type='datetime-local'
                     placeholder='Departuretime'
                     name='departuretime'
                     className='form-control'
@@ -102,10 +103,10 @@ class CreateFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-
+                <div>Arrival Time: </div>
                 <div className='form-group'>
                   <input
-                    type='Date'
+                    type='datetime-local'
                     placeholder='Arrivaltime'
                     name='arrivaltime'
                     className='form-control'
@@ -113,7 +114,7 @@ class CreateFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-
+                <div>Airport: </div>
                 <div className='form-group'>
                   <input
                     type='text'
@@ -124,7 +125,7 @@ class CreateFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-
+                <div>From: </div>
                 <div className='form-group'>
                   <input
                     type='text'
@@ -135,7 +136,7 @@ class CreateFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-
+                <div>To: </div>
                 <div className='form-group'>
                   <input
                     type='text'
@@ -146,7 +147,7 @@ class CreateFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-
+                <div>Economy Seats: </div>
                 <div className='form-group'>
                   <input
                     type='text'
@@ -157,6 +158,7 @@ class CreateFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
+                <div>Business Seats: </div>
                 <div className='form-group'>
                   <input
                     type='text'
@@ -167,6 +169,7 @@ class CreateFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
+                <div>First Seats: </div>
                 <div className='form-group'>
                   <input
                     type='text'

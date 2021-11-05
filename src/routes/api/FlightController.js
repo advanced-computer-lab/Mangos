@@ -3,7 +3,9 @@ const router = express.Router();
 
 const Flight = require('../../models/Flight');
 
+
 router.post('/', (req, res) => {
+  console.log(req.body.flightnumber)
   Flight.create(req.body)
     .then(flight => res.json({ msg: 'flight added successfully' }))
     .catch(err => res.status(400).json({ error: 'Unable to add this flight' }));

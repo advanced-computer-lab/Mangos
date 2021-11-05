@@ -7,7 +7,7 @@ const userController = require('./routes/api/userController');
 const flightController = require('./routes/api/FlightController');
 
 const Flight = require('./models/Flight');
-const User = require('./models/User');
+//const User = require('./models/User');
 
 
 const app = express();
