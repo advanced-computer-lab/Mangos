@@ -10,7 +10,7 @@ class UpdateFlightInfo extends Component {
         flightnumber: '',
         departuretime: '',
         arrivaltime: '',
-        airport: '',
+        airportterminal: '',
         from: '',
         to:'',
         //FlightDate:'',
@@ -28,7 +28,7 @@ class UpdateFlightInfo extends Component {
           flightnumber: res.data.flightnumber,
           departuretime: res.data.departuretime,
           arrivaltime: res.data.arrivaltime,
-          airport: res.data.airport,
+          airportterminal: res.data.airportterminal,
           from: res.data.from,
           to: res.data.to,
           Economyseats: res.data.Economyseats,
@@ -52,10 +52,9 @@ class UpdateFlightInfo extends Component {
         flightnumber: this.state.flightnumber,
         departuretime: this.state.departuretime,
         arrivaltime: this.state.arrivaltime,
-        airport: this.state.airport,
+        airportterminal: this.state.airportterminal,
         from: this.state.from,
         to:this.state.to,
-        //FlightDate:this.state.FlightDate,
         Economyseats:this.state.Economyseats,
         Businessseats:this.state.Businessseats,
         Firstclassseats:this.state.Firstclassseats
@@ -94,7 +93,7 @@ class UpdateFlightInfo extends Component {
           <div className="col-md-8 m-auto">
           <form noValidate onSubmit={this.onSubmit}>
             <div className='form-group'>
-              <label htmlFor="Flightnumber">Flightnumber</label>
+              <label htmlFor="Flightnumber">Flight number</label>
               <input
                 type='text'
                 placeholder='Flightnumber'
@@ -106,7 +105,7 @@ class UpdateFlightInfo extends Component {
             </div>
             <br />
             <div className='form-group'>
-              <label htmlFor="Departuretime">Departuretime</label>
+              <label htmlFor="Departuretime">Departure time</label>
               <input
                 type='datetime-local'
                 placeholder='Departuretime'
@@ -118,7 +117,7 @@ class UpdateFlightInfo extends Component {
             </div>
             <br />
             <div className='form-group'>
-              <label htmlFor="Arrivaltime">Arrivaltime</label>
+              <label htmlFor="Arrivaltime">Arrival time</label>
               <input
                 type='datetime-local'
                 placeholder='Arrivaltime'
@@ -130,13 +129,13 @@ class UpdateFlightInfo extends Component {
             </div>
             <br />            
             <div className='form-group'>
-              <label htmlFor="airport">Airport</label>
+              <label htmlFor="airportterminal">Airport terminal</label>
               <input
                 type='text'
-                placeholder='Airport'
-                name='airport'
+                placeholder='airportterminal'
+                name='airportterminal'
                 className='form-control'
-                value={this.state.airport}
+                value={this.state.airportterminal}
                 onChange={this.onChange}
               />
             </div>

@@ -45,8 +45,8 @@ class ShowFlightsList extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <br />
-              <h2 className="display-4 text-center">Flights List</h2>
+            <br />
+            <h2 className="display-4 text-center">Flights List</h2>
             </div>
 
             <div className="col-md-11">

@@ -5,34 +5,9 @@ const Flight = require('../../models/Flight');
 
 
 router.post('/', (req, res) => {
-  // var FlightNumber = req.body.flightnumber;
-  // var departuretime = req.body.departuretime;
-  // var arrivaltime=req.body.arrivaltime
-  // var airport=req.body.airport
-  // var from=req.body.from
-  // var to=req.body.to
-  // var Economyseats=req.body.Economyseats
-  // var Businessseats=req.body.Businessseats
-  // var Firstclassseats=req.body.Firstclassseats
-
   Flight.create(req.body)
     .then(flight => res.json({ msg: 'flight added successfully' }))
     .catch(err => res.status(400).json({ error: 'Unable to add this flight' }));
-  // Flight.insertMany([
-  // { flightnumber: FlightNumber, 
-  //   departuretime: departuretime, 
-  //   arrivaltime: arrivaltime, 
-  //   airport: airport, 
-  //   from: from, 
-  //   to: to, 
-  //   Economyseats: Economyseats, 
-  //   Businessseats: Businessseats,
-  //   Firstclassseats : Firstclassseats }
-  // ]).then(function(){
-  //   console.log("Data inserted") 
-  // }).catch(function(error){
-  //   console.log(error)      
-  // });
 });
 
 router.get('/', (req, res) => {
@@ -48,9 +23,6 @@ router.post('/SearchFlight', (req, res) => {
   airport=req.body.airport
   from=req.body.from
   to=req.body.to
-
-
-  
   console.log(req.body);
   console.log("FlightNumber: "+FlightNumber)
   console.log("departuretime: "+departuretime)
@@ -59,13 +31,6 @@ router.post('/SearchFlight', (req, res) => {
   console.log("from: "+from)
   console.log("to: "+to)
   Flight.find(
-  // { flightnumber: FlightNumber,
-  //   departuretime: departuretime,
-  //   arrivaltime: arrivaltime,
-  //   airport: airport,
-  //   from: from,
-  //   to: to
-  // }
   req.body
   )
     .then(flights => res.json(flights))

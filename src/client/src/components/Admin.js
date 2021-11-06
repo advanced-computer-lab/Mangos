@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
 
-import App  from './Nav/index'
 import Navbar  from './Nav/index'
 import CreateFlight from './CreateFlight';
 import ShowFlightsList from './ShowFlightsList';
@@ -17,8 +16,7 @@ class admin extends Component {
     render() {
         return (
           <Router>
-            <div>
-                
+            <div>  
                 <Navbar/>
                 <Route exact path='/show-flights' component={ShowFlightsList} />
                 <Route exact path='/SearchFlight' component={SearchFlight} />

@@ -13,11 +13,9 @@ class ShowFlightDetails extends Component {
   }
 
   componentDidMount() {
-    // console.log("Print id: " + this.props.match.params.id);
     axios
       .get('http://localhost:8000/api/FlightController/'+this.props.match.params.id)
       .then(res => {
-        // console.log("Print-showBookDetails-API-response: " + res.data);
         this.setState({
             flight: res.data
         })
@@ -26,17 +24,6 @@ class ShowFlightDetails extends Component {
         console.log("Error from showFlightDetails");
       })
   };
-
-  // onDeleteClick (id) {
-  //   axios
-  //     .delete('http://localhost:8000/api/FlightController/'+id)
-  //     .then(res => {
-  //       this.props.history.push("/");
-  //     })
-  //     .catch(err => {
-  //       console.log("Error form showFlightDetails_deleteClick");
-  //     })
-  // };
   async onDeleteClick (id) {
     const result = await confirm("Are you sure?");
     if (result) {
@@ -51,7 +38,7 @@ class ShowFlightDetails extends Component {
     axios
       .delete('http://localhost:8000/api/FlightController/'+id)
       .then(res => {
-        this.props.history.push("/");
+        this.props.history.push("/show-flights");
       })
       .catch(err => {
         console.log(err)
@@ -65,14 +52,6 @@ class ShowFlightDetails extends Component {
     const flight = this.state.flight;
     let flightItem = <div>
       <table className="table table-hover table-dark">
-        {/* <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead> */}
         <tbody>
           <tr>
             <th scope="row">1</th>
@@ -91,8 +70,8 @@ class ShowFlightDetails extends Component {
           </tr>
           <tr>
             <th scope="row">4</th>
-            <td>Airport</td>
-            <td>{ flight.airport }</td>
+            <td>Airport terminal</td>
+            <td>{ flight.airportterminal }</td>
           </tr>
           <tr>
             <th scope="row">5</th>
@@ -129,7 +108,7 @@ class ShowFlightDetails extends Component {
           <div className="row">
             <div className="col-md-10 m-auto">
               <br /> <br />
-              <Link to="/" className="btn btn-outline-warning float-left">
+              <Link to="/show-flights" className="btn btn-outline-warning float-left">
                   Show Flight List
               </Link>
             </div>
@@ -160,10 +139,6 @@ class ShowFlightDetails extends Component {
             </div>
 
           </div>
-            {/* <br />
-            <button type="button" class="btn btn-outline-info btn-lg btn-block">Edit Book</button>
-            <button type="button" class="btn btn-outline-danger btn-lg btn-block">Delete Book</button> */}
-
         </div>
       </div>
     );

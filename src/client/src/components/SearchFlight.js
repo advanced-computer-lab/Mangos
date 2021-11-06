@@ -12,7 +12,7 @@ class SearchFlight extends Component {
         flightnumber: '',
         departuretime: '',
         arrivaltime: '',
-        airport: '',
+        airportterminal: '',
         from: '',
         to:''
     };
@@ -24,63 +24,21 @@ class SearchFlight extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    
-    //  const data = [{flightnumber: this.state.flightnumber},
-    //      {departuretime: this.state.departuretime},
-    //      {arrivaltime: this.state.arrivaltime},
-    //      {airport: this.state.airport},
-    //      {from: this.state.from},
-    //      {to:this.state.to}];
-    
     const data = this.state;
-    
-
-    // axios
-    //   .post('http://localhost:8000/api/FlightController/SearchFlight', data)
-    //   .then(res => {
-    //     this.setState({
-    //         flightnumber: '',
-    //         departuretime: '',
-    //         arrivaltime: '',
-    //         airport: '',
-    //         from: '',
-    //         to:''
-    //       })
-    //     this.props.history.push('/SearchPage');
-    //   })
-    //   .catch(err => {
-    //     console.log("Error in SearchFlight!");
-    //   })
   };
 
   render() {
     const data = this.state;
-    // const flights = this.state.flights;
-    // console.log("PrintFlights: " + flights);
-    // let flightlist;
-
-    // if(!flights) {
-    //     flightlist = "there is no flight record!";
-    // } else {
-    //     flightlist = flights.map((flight, k) =>
-    //     <FlightCard flight={flight} key={k} />
-    //   );
-    // }
     return (
       <div className="SearchFlight">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <br />
-              <Link to="/show-flights" className="btn btn-outline-warning float-left">
-                  Show Flight List
-              </Link>
-            </div>
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Flight</h1>
-              <p className="lead text-center">
-                <b>Add a new flight</b>
-              </p>
+            <br />
+            <h1 className="display-4 text-center">Search Flight</h1>
+            <p className="lead text-center">
+              <b>Search for a flight</b>
+            </p>
 
               <form noValidate onSubmit={this.onSubmit}>
                 <div>Flight Number: </div>
@@ -116,14 +74,14 @@ class SearchFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                <div>Airport: </div>
+                <div>Airport terminal: </div>
                 <div className='form-group'>
                   <input
                     type='text'
-                    placeholder='Airport'
-                    name='airport'
+                    placeholder='airportterminal'
+                    name='airportterminal'
                     className='form-control'
-                    value={this.state.airport}
+                    value={this.state.airportterminal}
                     onChange={this.onChange}
                   />
                 </div>
@@ -149,6 +107,7 @@ class SearchFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
+
                 <Link to={{pathname:`/SearchPage/`, state: data}}  className="btn btn-outline-info btn-lg btn-block">
                     Search Flight
               </Link>

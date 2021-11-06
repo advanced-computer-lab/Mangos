@@ -1,5 +1,5 @@
 import React from 'react';
-//import SearchBar from './SearchBar';
+import Logo from '../images/Logo.svg';
 import {
     Nav,
     NavLink,
@@ -15,9 +15,9 @@ const Navbar = () => {
         <>
             <Nav>
                 <NavLink to="/Admin">
-                    <h1>Logo</h1>
+                    <img src={Logo} 
+                    width = '120' height = '120' alt='Logo'/>
                 </NavLink>
-                
                 <Bars />
                 <NavMenu>
                     <NavLink to= "/SearchFlight" activestyle>

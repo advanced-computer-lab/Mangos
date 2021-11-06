@@ -13,7 +13,7 @@ const FlightSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  airport: {
+  airportterminal: {
     type: String,
     required: true
   },
@@ -25,10 +25,6 @@ const FlightSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  /*FlightDate: {
-    type: String,
-    required: true
-  },*/
   Economyseats: {
     type: Number,
     required: true

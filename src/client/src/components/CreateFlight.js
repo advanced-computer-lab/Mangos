@@ -11,10 +11,9 @@ class CreateFlight extends Component {
         flightnumber: '',
         departuretime: '',
         arrivaltime: '',
-        airport: '',
+        airportterminal: '',
         from: '',
         to:'',
-        //FlightDate:'',
         Economyseats:'',
         Businessseats:'',
         Firstclassseats:''
@@ -27,15 +26,13 @@ class CreateFlight extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    //
     const data = {
         flightnumber: this.state.flightnumber,
         departuretime: this.state.departuretime,
         arrivaltime: this.state.arrivaltime,
-        airport: this.state.airport,
+        airportterminal: this.state.airportterminal,
         from: this.state.from,
         to:this.state.to,
-        //FlightDate:this.state.FlightDate,
         Economyseats:this.state.Economyseats,
         Businessseats:this.state.Businessseats,
         Firstclassseats:this.state.Firstclassseats
@@ -48,10 +45,9 @@ class CreateFlight extends Component {
             flightnumber: '',
             departuretime: '',
             arrivaltime: '',
-            airport: '',
+            airportterminal: '',
             from: '',
             to:'',
-            //FlightDate:'',
             Economyseats:'',
             Businessseats:'',
             Firstclassseats:''
@@ -114,14 +110,14 @@ class CreateFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                <div>Airport: </div>
+                <div>Airport terminal: </div>
                 <div className='form-group'>
                   <input
                     type='text'
-                    placeholder='Airport'
-                    name='airport'
+                    placeholder='airportterminal'
+                    name='airportterminal'
                     className='form-control'
-                    value={this.state.airport}
+                    value={this.state.airportterminal}
                     onChange={this.onChange}
                   />
                 </div>

@@ -34,11 +34,11 @@ class SearchPage extends Component {
        else{
         arrivaltime2=state.arrivaltime
       }
-       if(state.airport===""){
-        var airport2;
+       if(state.airportterminal===""){
+        var airportterminal2;
        }
        else{
-        airport2=state.airport
+        airportterminal2=state.airportterminal
       }
        if(state.from===""){
         var from2;
@@ -57,7 +57,7 @@ class SearchPage extends Component {
       flightnumber : flightnumber2,
       departuretime : departuretime2,
       arrivaltime:  arrivaltime2,
-      airport: airport2,
+      airportterminal: airportterminal2,
       from: from2,
       to: to2
     };
@@ -67,7 +67,7 @@ class SearchPage extends Component {
     axios
       .post('http://localhost:8000/api/FlightController/SearchFlight', data)
       .then(res => {
-       //this.props.history.push('/SearchPage');
+       this.props.history.push('/SearchPage');
         this.setState({
           flights: res.data
         })
@@ -79,7 +79,6 @@ class SearchPage extends Component {
 
 
   render() {
-    //const { state } = this.props.location;
     const flights = this.state.flights;
     console.log("PrintFlights: " + flights);
     let flightlist;
@@ -101,14 +100,6 @@ class SearchPage extends Component {
               <h2 className="display-4 text-center">Flights List</h2>
             </div>
 
-            <div className="col-md-11">
-              <Link to="/create-flight" className="btn btn-outline-warning float-right">
-                + Add New flight
-              </Link>
-              <br />
-              <br />
-              <hr />
-            </div>
 
           </div>
 
