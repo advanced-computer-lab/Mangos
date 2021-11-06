@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from './search';
+//import SearchBar from './SearchBar';
 import {
     Nav,
     NavLink,
@@ -17,9 +17,12 @@ const Navbar = () => {
                 <NavLink to="/Admin">
                     <h1>Logo</h1>
                 </NavLink>
-                <Search />
+                
                 <Bars />
                 <NavMenu>
+                    <NavLink to= "/SearchFlight" activestyle>
+                        Search
+                    </NavLink>
                     <NavLink to="/show-flights" activestyle>
                         ShowAllFlights
                     </NavLink>

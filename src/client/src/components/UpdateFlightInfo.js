@@ -108,7 +108,7 @@ class UpdateFlightInfo extends Component {
             <div className='form-group'>
               <label htmlFor="Departuretime">Departuretime</label>
               <input
-                type='Date'
+                type='datetime-local'
                 placeholder='Departuretime'
                 name='departuretime'
                 className='form-control'
@@ -120,7 +120,7 @@ class UpdateFlightInfo extends Component {
             <div className='form-group'>
               <label htmlFor="Arrivaltime">Arrivaltime</label>
               <input
-                type='Date'
+                type='datetime-local'
                 placeholder='Arrivaltime'
                 name='arrivaltime'
                 className='form-control'

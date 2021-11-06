@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import { confirm } from "react-confirm-box";
 import axios from 'axios';
 
 class ShowFlightDetails extends Component {
@@ -26,16 +27,37 @@ class ShowFlightDetails extends Component {
       })
   };
 
-  onDeleteClick (id) {
+  // onDeleteClick (id) {
+  //   axios
+  //     .delete('http://localhost:8000/api/FlightController/'+id)
+  //     .then(res => {
+  //       this.props.history.push("/");
+  //     })
+  //     .catch(err => {
+  //       console.log("Error form showFlightDetails_deleteClick");
+  //     })
+  // };
+  async onDeleteClick (id) {
+    const result = await confirm("Are you sure?");
+    if (result) {
+      console.log("result id: "+ id);
+      this.onDeleteClick2(this.props.match.params.id);
+      return;
+    }
+  };
+  
+  onDeleteClick2 (id) {
+    console.log("Print id2: " + this.props.match.params.id);
     axios
       .delete('http://localhost:8000/api/FlightController/'+id)
       .then(res => {
         this.props.history.push("/");
       })
       .catch(err => {
+        console.log(err)
         console.log("Error form showFlightDetails_deleteClick");
       })
-  };
+    };
 
 
   render() {
