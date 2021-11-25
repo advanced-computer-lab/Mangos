@@ -52,7 +52,7 @@ class CreateFlight extends Component {
             Businessseats:'',
             Firstclassseats:''
         })
-        this.props.history.push('/');
+        this.props.history.push('/Admin');
       })
       .catch(err => {
         console.log("Error in CreateFlight!");

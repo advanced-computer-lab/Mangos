@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import '../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import FlightCard from './FlightCard';
+
 
 class SearchPage extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class SearchPage extends Component {
 
   componentDidMount() {
     const  {state}  = this.props.location
-      if(state.flightnumber==""){
+      if(state.flightnumber===""){
         var flightnumber2;
       }
       else{
@@ -68,6 +69,7 @@ class SearchPage extends Component {
       .post('http://localhost:8000/api/FlightController/SearchFlight', data)
       .then(res => {
        this.props.history.push('/SearchPage');
+      
         this.setState({
           flights: res.data
         })
@@ -97,7 +99,7 @@ class SearchPage extends Component {
           <div className="row">
             <div className="col-md-12">
               <br />
-              <h2 className="display-4 text-center">Flights List</h2>
+              <h2 className="display-4 text-center">Search result</h2>
             </div>
 
 

@@ -20,16 +20,9 @@ router.post('/SearchFlight', (req, res) => {
   FlightNumber = req.body.flightnumber;
   departuretime = req.body.departuretime;
   arrivaltime=  req.body.arrivaltime
-  airport=req.body.airport
-  from=req.body.from
-  to=req.body.to
-  console.log(req.body);
-  console.log("FlightNumber: "+FlightNumber)
-  console.log("departuretime: "+departuretime)
-  console.log("arrivaltime: "+arrivaltime)
-  console.log("airport: "+airport)
-  console.log("from: "+from)
-  console.log("to: "+to)
+  airport=req.body.airport;
+  from=req.body.from;
+  to=req.body.to;
   Flight.find(
   req.body
   )

@@ -3,13 +3,10 @@ import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
 
-import admin from './Admin';
 
-<Route path="/Admin" component={admin} /> 
-
-const Home = () => {
+const Login = () => {
     return (
-        <div className="ShowFlightList">
+        <div className="Login">
         <div className="container">
         <div className="col-md-11">
             
@@ -18,10 +15,6 @@ const Home = () => {
               </Link>
               <br />
               <br />
-              <hr />
-              <Link to='/SignIn' className="btn btn-outline-warning float-right">
-                Sign In
-              </Link>
             </div>
 
             </div>
@@ -30,4 +23,4 @@ const Home = () => {
     
 }
 
-export default Home;
+export default Login;

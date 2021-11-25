@@ -1,5 +1,6 @@
 import React from 'react';
-import Logo from '../images/Logo.svg';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Logo from '../../images/Logo.svg';
 import {
     Nav,
     NavLink,
@@ -9,6 +10,13 @@ import {
     NavBtn
 }from './NavbarElements';
 
+import adminhome from '../../pages/adminhome'
+import CreateFlight from '../../pages/CreateFlight';
+import ShowFlightsList from '../../pages/ShowFlightsList';
+import SearchPage from '../../pages/SearchPage';
+import SearchFlight from '../../pages/SearchFlight';
+import ShowFlightDetails from '../../pages/ShowFlightDetails';
+import UpdateFlightInfo from '../../pages/UpdateFlightInfo';
 
 const Navbar = () => {
     return(
@@ -33,6 +41,13 @@ const Navbar = () => {
                 </NavMenu>
                 
             </Nav>
+            <Route exact path='/Admin' component={adminhome}/>
+            <Route exact path='/show-flights'  component={ShowFlightsList}/>
+            <Route exact path='/SearchFlight' component={SearchFlight}/>
+            <Route exact path='/create-flight' component={CreateFlight}/>
+            <Route exact path='/edit-flight/:id' component={UpdateFlightInfo}/>
+            <Route exact path='/show-flight/:id' component={ShowFlightDetails}/>
+            <Route exact path='/SearchPage' component={SearchPage}/>
         </>
     );
 };
