@@ -12,9 +12,11 @@ import HomeNavbar  from './components/Nav/Homeindex'
 import CreateFlight from './pages/CreateFlight';
 import ShowFlightsList from './pages/ShowFlightsList';
 import SearchPage from './pages/SearchPage';
+import availableflights from './pages/availableFlights';
 import SearchFlight from './pages/SearchFlight';
 import ShowFlightDetails from './pages/ShowFlightDetails';
 import UpdateFlightInfo from './pages/UpdateFlightInfo';
+
 
 
 class App extends Component {
@@ -23,6 +25,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path='/' component={Homepage,HomeNavbar} />
+          <Route exact path='/availableFlights' component={availableflights}/>
           <Route exact path='/SignIn' component={Login} />
           <Route exact path='/Admin' component={admin} />
           <Route exact path='/show-flights'  component={ShowFlightsList,Navbar}/>
@@ -31,6 +34,7 @@ class App extends Component {
           <Route exact path='/edit-flight/:id' component={UpdateFlightInfo,Navbar}/>
           <Route exact path='/show-flight/:id' component={ShowFlightDetails,Navbar}/>
           <Route exact path='/SearchPage' component={SearchPage,Navbar}/>
+          
         </div>
       </Router>
     );

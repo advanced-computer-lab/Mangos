@@ -17,6 +17,15 @@ class SearchPage extends Component {
 
   componentDidMount() {
     const  {state}  = this.props.location
+    if(state.flightnumber==="" && state.departuretime==="" && state.arrivaltime==="" && state.airportterminal==="" && state.from==="" && state.to===""){
+      var flightnumber2 = "";
+      var departuretime2 = "";
+      var arrivaltime2 = "";
+      var airportterminal2 = "";
+      var from2 = "";
+      var to2 = "";
+    }
+    else{
       if(state.flightnumber===""){
         var flightnumber2;
       }
@@ -24,35 +33,36 @@ class SearchPage extends Component {
         flightnumber2=state.flightnumber
       }
       if(state.departuretime===""){
-       var departuretime2;
+        var departuretime2;
       }
       else{
         departuretime2=state.departuretime
       }
       if(state.arrivaltime===""){
         var arrivaltime2;
-       }
-       else{
+      }
+      else{
         arrivaltime2=state.arrivaltime
       }
-       if(state.airportterminal===""){
+      if(state.airportterminal===""){
         var airportterminal2;
-       }
-       else{
+      }
+      else{
         airportterminal2=state.airportterminal
       }
-       if(state.from===""){
+      if(state.from===""){
         var from2;
-       }
-       else{
+      }
+      else{
         from2=state.from
       }
-       if(state.to===""){
+      if(state.to===""){
         var to2;
-       }
-       else{
+      }
+      else{
         to2=state.to
       }
+    }
 
     const data =  {  
       flightnumber : flightnumber2,

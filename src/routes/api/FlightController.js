@@ -29,6 +29,21 @@ router.post('/SearchFlight', (req, res) => {
     .then(flights => res.json(flights))
     .catch(err => res.status(404).json({ noflightsfound: 'No flights found' }));
 });
+router.post('/availableFlights', (req, res) => {
+  from = req.body.from;
+  to = req.body.to;
+  departure = req.body.departure;
+  arrival =  req.body.arrival;
+  Cabin = req.body.Cabin;
+  AdultdefaultOption = req.body.Adults;
+  ChildrendefaultOption = req.body.Children;
+  Flight.find(
+  req.body
+  )
+    .then(flights => res.json(flights))
+    .catch(err => res.status(404).json({ noflightsfound: 'No flights found' }));
+});
+
 //to be updated---
 router.get('/:id', (req, res) => {
   Flight.findById(req.params.id)
