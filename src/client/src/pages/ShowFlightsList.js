@@ -16,7 +16,6 @@ class ShowFlightsList extends Component {
     axios
       .get('http://localhost:8000/api/FlightController')
       .then(res => {
-        this.props.history.push('/show-flights');
         this.setState({
           flights: res.data
         })

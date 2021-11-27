@@ -15,7 +15,7 @@ import DepartCard from './DepartCard';
 import ReturnCard from './ReturnCard';
 
 
-class availableFlights extends Component {
+class UseravailableFlights extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -150,13 +150,6 @@ class availableFlights extends Component {
     return (
     
       <div className="ShowFlightList">
-        <Nav>
-            <NavLink to="/">
-                <img src={Logo} 
-                width = '120' height = '120' alt='Logo'/>
-            </NavLink>
-            <Bars />
-        </Nav>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -239,4 +232,4 @@ class availableFlights extends Component {
   }
 }
 
-export default availableFlights;
+export default UseravailableFlights;

@@ -7,18 +7,21 @@ import axios from 'axios';
 const Login = () => {
     return (
         <div className="Login">
-        <div className="container">
-        <div className="col-md-11">
+          <div className="container">
+            <div className="col-md-11">
             
               <Link to='/Admin' className="btn btn-outline-warning float-right">
                 Sign as Administrator
               </Link>
               <br />
               <br />
+              <Link to='/User' className="btn btn-outline-warning float-right">
+                Sign as User
+              </Link>
             </div>
 
             </div>
-            </div>
+      </div>
     )
     
 }
