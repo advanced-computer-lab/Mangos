@@ -35,8 +35,8 @@ router.post('/availableFlights', (req, res) => {
   departure = req.body.departure;
   arrival =  req.body.arrival;
   Cabin = req.body.Cabin;
-  AdultdefaultOption = req.body.Adults;
-  ChildrendefaultOption = req.body.Children;
+  Adults = req.body.Adults;
+  Children = req.body.Children;
   Flight.find(
   req.body
   )

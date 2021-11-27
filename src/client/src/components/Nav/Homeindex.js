@@ -12,7 +12,9 @@ import {
     NavBtn
 }from './NavbarElements';
 
-
+const CabinOpt = ["Economy Class", "Business Class", "First Class"]
+const AdultOption = ["1","2","3","4","5","6","7","8","9"];
+const ChildOption = ["0","1","2","3","4","5","6","7","8"]
      
 class HomeNavbar extends Component{
     constructor() {
@@ -22,11 +24,20 @@ class HomeNavbar extends Component{
             to:'',
             departure: '',
             arrival: '',
-            Cabin: '',
-            AdultdefaultOption:'',
-            ChildrendefaultOption:''
+            Cabin: 'Economy Class',
+            Adults:'1',
+            Children:'0'
         };
       }
+      handleChange = e =>{
+        this.setState({Cabin:e.target.value});
+      };
+      handleChange1 = e =>{
+        this.setState({Adults:e.target.value});
+      };
+      handleChange2 = e =>{
+        this.setState({Children:e.target.value});
+      };
 
       onChange = e => {
         this.setState({ [e.target.name]: e.target.value });
@@ -35,17 +46,10 @@ class HomeNavbar extends Component{
       onSubmit = e => {
         e.preventDefault();
         const data = this.state;
-        console.log(data.Cabin)
       };
     
     render(){
         const data = this.state;
-        const CabinOption = ['Economy Class', 'Business Class', 'First Class'];
-        const AdultOption = ['1','2','3','4','5','6','7','8','9'];
-        const ChildOption = ['0','1','2','3','4','5','6','7','8'];
-        const Cabin= CabinOption[0];
-        const AdultdefaultOption= AdultOption[0];
-        const ChildrendefaultOption = ChildOption[0];
         return(
             <div className='HomePage'>
             <Nav>
@@ -116,16 +120,32 @@ class HomeNavbar extends Component{
                         />
                         </div>
                         <div>Cabin: </div>
-                        <Dropdown options={CabinOption} onChange={this._onSelect} value={Cabin} name='Cabin' />
+                        <div className="select-container">
+                        <select value={this.state.Cabin} onChange={this.handleChange}>
+                        {CabinOpt.map((option) => (
+                            <option value={option}>{option}</option>
+                        ))}
+                        </select>
+                        </div>
                         <hr/>
                         <div><h3>Passengers</h3></div>
                         <div>Adults: </div>
-                        <Dropdown options={AdultOption} onChange={this._onSelect} value={AdultdefaultOption} name='Adults'/>
-                        <div>Children: </div>
-                        <Dropdown options={ChildOption} onChange={this._onSelect} value={ChildrendefaultOption} name='children'/>
-                        
+                        <div className="select-container">
+                        <select value={this.state.Adults} onChange={this.handleChange1}>
+                        {AdultOption.map((option) => (
+                            <option value={option}>{option}</option>
+                        ))}
+                        </select>
+                        </div>
 
-
+                        <div>Children: </div>                        
+                        <div className="select-container">
+                        <select value={this.state.Children} onChange={this.handleChange2}>
+                        {ChildOption.map((option) => (
+                            <option value={option}>{option}</option>
+                        ))}
+                        </select>
+                        </div>
                         <br/>
                         <br/>
 
