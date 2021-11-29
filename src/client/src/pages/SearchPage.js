@@ -78,7 +78,6 @@ class SearchPage extends Component {
     axios
       .post('http://localhost:8000/api/FlightController/SearchFlight', data)
       .then(res => {
-       this.props.history.push('/SearchPage');
       
         this.setState({
           flights: res.data

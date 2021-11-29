@@ -23,8 +23,15 @@ app.get('/', (req, res) => res.send('Hello world!'));
 
 app.use('/api/FlightController', flightController);
 app.use('/api/userController', userController);
-
-
+/*app.get('/test',(req, res) =>
+Flight.find({
+    '_id': [
+        "61a028ae7076e18f2947cb21",
+        "61a028ea7076e18f2947cb23"
+    ]
+})
+.then(flights => res.json(flights))
+.catch(err => res.status(404).json({ noflightsfound: 'No flights found' })));*/
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
 

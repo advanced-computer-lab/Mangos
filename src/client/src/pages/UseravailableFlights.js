@@ -11,8 +11,8 @@ import {
     NavBtnLink,
     NavBtn
 }from '../components/Nav/NavbarElements';
-import DepartCard from './DepartCard';
-import ReturnCard from './ReturnCard';
+
+import Card from './selectedCard';
 
 
 class UseravailableFlights extends Component {

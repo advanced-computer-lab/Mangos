@@ -36,7 +36,7 @@ class App extends Component {
           <Route exact path='/flightdetails/:id' component={FlightDetails}/>
           <Route exact path='/selectedflights' component={selectedflights}/>
           <Route exact path='/availableFlights' component={availableflights}/>
-          <Route exact path='/UseravailableFlights' component={UseravailableFlights}/>
+          <Route exact path='/UseravailableFlights' component={UseravailableFlights,UserNavbar}/>
           <Route exact path='/SignIn' component={Login} />
           <Route exact path='/Admin' component={admin} />
           <Route exact path='/User' component={User} />

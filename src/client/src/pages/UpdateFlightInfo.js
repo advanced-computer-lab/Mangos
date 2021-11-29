@@ -10,10 +10,12 @@ class UpdateFlightInfo extends Component {
         flightnumber: '',
         departuretime: '',
         arrivaltime: '',
+        price:'',
+        tripduration:'',
+        baggageallowance:'',
         airportterminal: '',
         from: '',
         to:'',
-        //FlightDate:'',
         Economyseats:'',
         Businessseats:'',
         Firstclassseats:''
@@ -28,6 +30,9 @@ class UpdateFlightInfo extends Component {
           flightnumber: res.data.flightnumber,
           departuretime: res.data.departuretime,
           arrivaltime: res.data.arrivaltime,
+          price: res.data.price,
+          tripduration: res.data.tripduration,
+          baggageallowance: res.data.baggageallowance,
           airportterminal: res.data.airportterminal,
           from: res.data.from,
           to: res.data.to,
@@ -52,6 +57,9 @@ class UpdateFlightInfo extends Component {
         flightnumber: this.state.flightnumber,
         departuretime: this.state.departuretime,
         arrivaltime: this.state.arrivaltime,
+        price: this.state.price,
+        tripduration: this.state.tripduration,
+        baggageallowance: this.state.baggageallowance,
         airportterminal: this.state.airportterminal,
         from: this.state.from,
         to:this.state.to,
@@ -124,6 +132,42 @@ class UpdateFlightInfo extends Component {
                 name='arrivaltime'
                 className='form-control'
                 value={this.state.arrivaltime}
+                onChange={this.onChange}
+              />
+            </div>
+            <br />
+            <div className='form-group'>
+              <label htmlFor="Price">Price</label>
+              <input
+                type='text'
+                placeholder='Price'
+                name='price'
+                className='form-control'
+                value={this.state.price}
+                onChange={this.onChange}
+              />
+            </div>
+            <br />
+            <div className='form-group'>
+              <label htmlFor="TripDuration">Trip Duration</label>
+              <input
+                type='text'
+                placeholder='TripDuration'
+                name='tripduration'
+                className='form-control'
+                value={this.state.tripduration}
+                onChange={this.onChange}
+              />
+            </div>
+            <br />
+            <div className='form-group'>
+              <label htmlFor="BaggageAllowance">Baggage Allowance</label>
+              <input
+                type='text'
+                placeholder='BaggageAllowance'
+                name='baggageallowance'
+                className='form-control'
+                value={this.state.baggageallowance}
                 onChange={this.onChange}
               />
             </div>

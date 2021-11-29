@@ -11,6 +11,9 @@ class CreateFlight extends Component {
         flightnumber: '',
         departuretime: '',
         arrivaltime: '',
+        price:'',
+        tripduration:'',
+        baggageallowance:'',
         airportterminal: '',
         from: '',
         to:'',
@@ -30,6 +33,9 @@ class CreateFlight extends Component {
         flightnumber: this.state.flightnumber,
         departuretime: this.state.departuretime,
         arrivaltime: this.state.arrivaltime,
+        price: this.state.price,
+        tripduration: this.state.tripduration,
+        baggageallowance: this.state.baggageallowance,
         airportterminal: this.state.airportterminal,
         from: this.state.from,
         to:this.state.to,
@@ -45,6 +51,9 @@ class CreateFlight extends Component {
             flightnumber: '',
             departuretime: '',
             arrivaltime: '',
+            price: '',
+            tripduration:'',
+            baggageallowance:'',
             airportterminal: '',
             from: '',
             to:'',
@@ -60,6 +69,7 @@ class CreateFlight extends Component {
   };
 
   render() {
+    console.log(this.state.baggageallowance)
     return (
       <div className="CreateFlight">
         <div className="container">
@@ -107,6 +117,39 @@ class CreateFlight extends Component {
                     name='arrivaltime'
                     className='form-control'
                     value={this.state.arrivaltime}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div>Price: </div>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    placeholder='Price'
+                    name='price'
+                    className='form-control'
+                    value={this.state.price}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div>Trip Duration: </div>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    placeholder='TripDuration'
+                    name='tripduration'
+                    className='form-control'
+                    value={this.state.tripduration}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div>Baggage Allowance: </div>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    placeholder='BaggageAllowance'
+                    name='baggageallowance'
+                    className='form-control'
+                    value={this.state.baggageallowance}
                     onChange={this.onChange}
                   />
                 </div>

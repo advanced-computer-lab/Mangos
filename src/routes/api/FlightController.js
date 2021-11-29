@@ -15,30 +15,28 @@ router.get('/', (req, res) => {
     .then(flights => res.json(flights))
     .catch(err => res.status(404).json({ noflightsfound: 'No flights found' }));
 });
-router.post('/SearchFlight', (req, res) => {
 
-  FlightNumber = req.body.flightnumber;
-  departuretime = req.body.departuretime;
-  arrivaltime=  req.body.arrivaltime
-  airport=req.body.airport;
-  from=req.body.from;
-  to=req.body.to;
+router.post('/findids', (req, res) => {
+  Flight.find({
+    '_id': req.body
+  })
+.then(flights => res.json(flights))
+.catch(err => res.status(404).json({ noflightsfound: 'No flights found' }));
+});
+
+router.post('/SearchFlight', (req, res) => {
   Flight.find(
-  req.body
+    req.body
   )
     .then(flights => res.json(flights))
     .catch(err => res.status(404).json({ noflightsfound: 'No flights found' }));
 });
 router.post('/availableFlights', (req, res) => {
-  from = req.body.from;
-  to = req.body.to;
-  departure = req.body.departure;
-  arrival =  req.body.arrival;
   Cabin = req.body.Cabin;
   Adults = req.body.Adults;
   Children = req.body.Children;
   Flight.find(
-  req.body
+    req.body
   )
     .then(flights => res.json(flights))
     .catch(err => res.status(404).json({ noflightsfound: 'No flights found' }));
@@ -51,6 +49,9 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(404).json({ noflightfound: 'No flight found' }));
 });
 //---
+
+
+
 router.put('/:id', (req, res) => {
   Flight.findByIdAndUpdate(req.params.id, req.body)
     .then(flight => res.json({ msg: 'Updated successfully' }))

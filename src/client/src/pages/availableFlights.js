@@ -11,23 +11,49 @@ import {
     NavBtnLink,
     NavBtn
 }from '../components/Nav/NavbarElements';
-import DepartCard from './DepartCard';
-import ReturnCard from './ReturnCard';
+import Card from './selectedCard';
+import selectedflights from './selectedflights';
 
 
 class availableFlights extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        selectedFlights:[],
         flights: [],
         flights2: []
+        
     };
- 
-  
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  handleInputChange(event) {
+    const target = event.target;
+    var value = target.value;
+    var name = target.name;
+
+    if(target.checked){
+      console.log("checked")
+      this.state.selectedFlights[value] = name;   
+
+    }else{
+      console.log("unchecked")
+      this.state.selectedFlights.splice(value, 1);
+    }
+    
+  }
+
+  submit(){
+    console.log(this.state.selectedFlights)
+  }
+
 
   componentDidMount() {
     const  {state}  = this.props.location
+    const Cabin = state.Cabin
+    const Adults = state.Adults
+    const Children = state.Children
+
     if(state.from==="" && state.to==="" && state.departure==="" && state.arrival===""){
       var from2 = "";
       var to2 = "";
@@ -60,36 +86,19 @@ class availableFlights extends Component {
       else{
           arrival2=state.arrival
       }
-      if(state.Cabin===""){
-          var Cabin2;
-          console.log("notavailable")
-      }
-      else{
-          var Cabin2 = state.Cabin;
-          console.log("available")
-      }
-      if(state.Adults===""){
-          var Adults2;
-      }
-      else{
-          Adults2=state.Adults
-      }
-      if(state.Children === ""){
-          var Children2;
-      }
-      else{
-        Children2 = state.Children
-      }
+      var Cabin2 = Cabin;
+      var Adults2 = Adults;
+      var Children2 = Children;
     }
     
     const data =  {  
-        from: from2,
-        to: to2,
-        departure : departure2,
-        arrival :  arrival2,
-        Cabin: Cabin2,
-        Adults: Adults2,
-        Children: Children2
+      from: from2,
+      to: to2,
+      departure : departure2,
+      arrival :  arrival2,
+      Cabin: Cabin2,
+      Adults: Adults2,
+      Children: Children2
     };
     const data2 =  {  
       from: to2,
@@ -128,24 +137,18 @@ class availableFlights extends Component {
 
 
   render() {
+    const  {state}  = this.props.location
+
+    const Cabin = state.Cabin
+    const Adults = state.Adults
+    const Children = state.Children
+
+    const data = this.state;
     const flights = this.state.flights;
     const flights2 = this.state.flights2;
-    console.log("PrintFlights: " + flights[0]);
-    console.log("PrintFlights: " + flights2[0]);
-    /*let flightlist;
-    let flightlist2;
-
-    if(!flights) {
-        flightlist = "there is no flight record!";
-    } else {
-      flightlist = flights.map((flight, k) =>
-        <DepartCard flight={flight} key={k} />
-      );
-      flightlist2 = flights2.map((flight2, k) =>
-        <ReturnCard flight={flight2} key={k} />
-      );
-    }*/
-    
+    console.log("selected: " + data);
+    console.log("PrintFlights1: " + flights);
+    console.log("PrintFlights2: " + flights2);
 
     return (
     
@@ -183,7 +186,7 @@ class availableFlights extends Component {
                 <tbody>
                     {flights && flights.map(flights =>
                         <tr>
-                            <td><input type="checkbox" value={flights._id} /></td>
+                            <td><input type="checkbox" value={flights.flightnumber} name={flights._id} onChange={this.handleInputChange}/></td>
                             <td>{flights.from}</td>
                             <td>{flights.to}</td>
                             <td>{flights.departuretime}</td>
@@ -212,7 +215,7 @@ class availableFlights extends Component {
                 <tbody>
                     {flights2 && flights2.map(flights =>
                         <tr>
-                            <td><input type="checkbox" value={flights._id} /></td>
+                            <td><input type="checkbox" value={flights.flightnumber} name={flights._id} onChange={this.handleInputChange}/></td>
                             <td>{flights.from}</td>
                             <td>{flights.to}</td>
                             <td>{flights.departuretime}</td>
@@ -225,8 +228,8 @@ class availableFlights extends Component {
                 </tbody>
             </table>
           </div>
-          <div className="col-md-11">
-              <Link to="/selectedflights" className="btn btn-outline-warning float-right">
+            <div className="col-md-11">
+              <Link to={{pathname:`/selectedflights`, state: data.selectedFlights, cabin:Cabin, adults:Adults, children: Children}} className="btn btn-outline-warning float-right">
                 Show Selected flights
               </Link>
               <br />

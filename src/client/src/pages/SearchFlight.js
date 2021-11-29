@@ -108,7 +108,7 @@ class SearchFlight extends Component {
                   />
                 </div>
 
-                <Link to={{pathname:`/SearchPage/`, state: data}}  className="btn btn-outline-info btn-lg btn-block">
+                <Link to={{pathname:`/SearchPage`, state: data}}  className="btn btn-outline-info btn-lg btn-block">
                     Search Flight
               </Link>
                 
