@@ -1,33 +1,42 @@
 import React, { Component} from 'react';
-import '../App.css';
+import '../../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Logo from '../images/Logo.svg'
-import {
-    Nav,
-    NavLink,
-    Bars,
-    NavMenu,
-    NavBtnLink,
-    NavBtn
-}from '../components/Nav/NavbarElements';
-
-import Card from './selectedCard';
 
 
 class UseravailableFlights extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        flights: [],
-        flights2: []
+      selectedFlights:[],
+      flights: [],
+      flights2: []
     };
- 
-  
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+  handleInputChange(event) {
+    const target = event.target;
+    var value = target.value;
+    var name = target.name;
+
+    if(target.checked){
+      console.log("checked")
+      this.state.selectedFlights[value] = name;   
+
+    }else{
+      console.log("unchecked")
+      this.state.selectedFlights.splice(value, 1);
+    }
+    
   }
 
   componentDidMount() {
     const  {state}  = this.props.location
+    const Cabin = state.Cabin
+    const Adults = state.Adults
+    const Children = state.Children
+    console.log("State "+state)
+
     if(state.from==="" && state.to==="" && state.departure==="" && state.arrival===""){
       var from2 = "";
       var to2 = "";
@@ -60,26 +69,9 @@ class UseravailableFlights extends Component {
       else{
           arrival2=state.arrival
       }
-      if(state.Cabin===""){
-          var Cabin2;
-          console.log("notavailable")
-      }
-      else{
-          var Cabin2 = state.Cabin;
-          console.log("available")
-      }
-      if(state.Adults===""){
-          var Adults2;
-      }
-      else{
-          Adults2=state.Adults
-      }
-      if(state.Children === ""){
-          var Children2;
-      }
-      else{
-        Children2 = state.Children
-      }
+      var Cabin2 = Cabin;
+      var Adults2 = Adults;
+      var Children2 = Children;
     }
     
     const data =  {  
@@ -110,7 +102,7 @@ class UseravailableFlights extends Component {
         })
       })
         .catch(err =>{
-          console.log('Error from availableFlights');
+          console.log('Error from UseravailableFlights');
         })
 
     axios
@@ -122,30 +114,24 @@ class UseravailableFlights extends Component {
 
       })
       .catch(err =>{
-        console.log('Error from availableFlights');
+        console.log('Error from UseravailableFlights');
       })
   };
 
 
   render() {
+    const  {state}  = this.props.location
+
+    const Cabin = state.Cabin
+    const Adults = state.Adults
+    const Children = state.Children
+
+    const data = this.state;
     const flights = this.state.flights;
     const flights2 = this.state.flights2;
-    console.log("PrintFlights: " + flights[0]);
-    console.log("PrintFlights: " + flights2[0]);
-    /*let flightlist;
-    let flightlist2;
-
-    if(!flights) {
-        flightlist = "there is no flight record!";
-    } else {
-      flightlist = flights.map((flight, k) =>
-        <DepartCard flight={flight} key={k} />
-      );
-      flightlist2 = flights2.map((flight2, k) =>
-        <ReturnCard flight={flight2} key={k} />
-      );
-    }*/
-    
+    console.log("selected: " + data);
+    console.log("PrintFlights1: " + flights);
+    console.log("PrintFlights2: " + flights2);
 
     return (
     
@@ -176,12 +162,12 @@ class UseravailableFlights extends Component {
                 <tbody>
                     {flights && flights.map(flights =>
                         <tr>
-                            <td><input type="checkbox" value={flights._id} /></td>
+                            <td><input type="checkbox" value={flights.flightnumber} name={flights._id} onChange={this.handleInputChange}/></td>
                             <td>{flights.from}</td>
                             <td>{flights.to}</td>
                             <td>{flights.departuretime}</td>
                             <td>{flights.arrivaltime}</td>
-                            <td><Link to={`/flightdetails/${flights._id}`}>
+                            <td><Link to={`/UserFlightDetails/${flights._id}`}>
                               Show Details
                             </Link></td>
                         </tr>
@@ -205,12 +191,12 @@ class UseravailableFlights extends Component {
                 <tbody>
                     {flights2 && flights2.map(flights =>
                         <tr>
-                            <td><input type="checkbox" value={flights._id} /></td>
+                            <td><input type="checkbox" value={flights.flightnumber} name={flights._id} onChange={this.handleInputChange}/></td>
                             <td>{flights.from}</td>
                             <td>{flights.to}</td>
                             <td>{flights.departuretime}</td>
                             <td>{flights.arrivaltime}</td>
-                            <td><Link to={`/flightdetails/${flights._id}`}>
+                            <td><Link to={`/UserFlightDetails/${flights._id}`}>
                               Show Details
                             </Link></td>
                         </tr>
@@ -219,7 +205,7 @@ class UseravailableFlights extends Component {
             </table>
           </div>
           <div className="col-md-11">
-              <Link to="/selectedflights" className="btn btn-outline-warning float-right">
+              <Link to={{pathname:`/UserSelectedFlights`, state: data.selectedFlights, cabin:Cabin, adults:Adults, children: Children}} className="btn btn-outline-warning float-right">
                 Show Selected flights
               </Link>
               <br />

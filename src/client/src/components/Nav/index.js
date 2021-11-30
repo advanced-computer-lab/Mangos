@@ -10,13 +10,13 @@ import {
     NavBtn
 }from './NavbarElements';
 
-import adminhome from '../../pages/adminhome'
-import CreateFlight from '../../pages/CreateFlight';
-import ShowFlightsList from '../../pages/ShowFlightsList';
-import SearchPage from '../../pages/SearchPage';
-import SearchFlight from '../../pages/SearchFlight';
-import ShowFlightDetails from '../../pages/ShowFlightDetails';
-import UpdateFlightInfo from '../../pages/UpdateFlightInfo';
+import adminhome from '../../pages/Admin/adminhome'
+import CreateFlight from '../../pages/Admin/CreateFlight';
+import ShowFlightsList from '../../pages/Admin/ShowFlightsList';
+import SearchPage from '../../pages/Admin/SearchPage';
+import SearchFlight from '../../pages/Admin/SearchFlight';
+import ShowFlightDetails from '../../pages/Admin/ShowFlightDetails';
+import UpdateFlightInfo from '../../pages/Admin/UpdateFlightInfo';
 
 const Navbar = () => {
     return(

@@ -10,14 +10,13 @@ import {
     NavBtn
 }from './NavbarElements';
 
-import userhome from '../../pages/userhome'
-import CreateFlight from '../../pages/CreateFlight';
-import UseravailableFlights from '../../pages/UseravailableFlights';
-import ShowFlightsList from '../../pages/ShowFlightsList';
-import SearchPage from '../../pages/SearchPage';
-import SearchFlight from '../../pages/SearchFlight';
-import ShowFlightDetails from '../../pages/ShowFlightDetails';
-import UpdateFlightInfo from '../../pages/UpdateFlightInfo';
+import userhome from '../../pages/User/userhome'
+import Account from '../../pages/User/Account';
+import UpdateUserInfo from '../../pages/User/UpdateUserInfo';
+import UserReservedFlights from '../../pages/User/UserReservedFlights';
+import UseravailableFlights from '../../pages/User/UseravailableFlights';
+import UserSelectedFlights from '../../pages/User/UserSelectedFlights';
+import UserFlightDetails from '../../pages/User/UserFlightDetails';
 
 const Userindex = () => {
     return(
@@ -29,27 +28,22 @@ const Userindex = () => {
                 </NavLink>
                 <Bars />
                 <NavMenu>
-                    <NavLink to= "/SearchFlight" activestyle>
-                        Search
+                    <NavLink to= "/ReservedFlights" activestyle>
+                        Reserved Flights
                     </NavLink>
-                    <NavLink to="/show-flights" activestyle>
-                        ShowAllFlights
+                    <NavLink to="/Account" activestyle>
+                        Account
                     </NavLink>
-                    <NavLink to="/create-flight" activestyle>
-                        Add flight
-                    </NavLink>
-                    
                 </NavMenu>
-                
             </Nav>
-            <Route exact path='/User' component={userhome}/>
+
+            <Route exact path='/User' component={userhome} />
+            <Route exact path='/Account' component={Account} />
+            <Route exact path='/UpdateUserInfo/:id' component={UpdateUserInfo} />
+            <Route exact path='/ReservedFlights' component={UserReservedFlights}/>
             <Route exact path='/UseravailableFlights' component={UseravailableFlights}/>
-            <Route exact path='/show-flights'  component={ShowFlightsList}/>
-            <Route exact path='/SearchFlight' component={SearchFlight}/>
-            <Route exact path='/create-flight' component={CreateFlight}/>
-            <Route exact path='/edit-flight/:id' component={UpdateFlightInfo}/>
-            <Route exact path='/show-flight/:id' component={ShowFlightDetails}/>
-            <Route exact path='/SearchPage' component={SearchPage}/>
+            <Route exact path='/UserSelectedFlights' component={UserSelectedFlights}/>
+            <Route exact path='/UserFlightDetails/:id' component={UserFlightDetails}/>
         </>
     );
 };

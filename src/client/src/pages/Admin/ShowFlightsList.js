@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import FlightCard from './FlightCard';
+import FlightCard from '../FlightCard';
 
 class ShowFlightsList extends Component {
   constructor(props) {

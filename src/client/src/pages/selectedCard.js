@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
-const ReturnCard = (props) => {
+const SelectedCard = (props) => {
 
     const flight = props.flight;
     const cabin = props.cabin;
@@ -29,4 +29,4 @@ const ReturnCard = (props) => {
     )
 };
 
-export default ReturnCard;
+export default SelectedCard;

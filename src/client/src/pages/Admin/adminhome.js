@@ -1,4 +1,4 @@
-import background from '../images/background.jpg'
+import background from '../../images/background.jpg'
 
 const adminhome = () => {
   return (

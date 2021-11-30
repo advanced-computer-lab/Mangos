@@ -11,8 +11,6 @@ import {
     NavBtnLink,
     NavBtn
 }from '../components/Nav/NavbarElements';
-import Card from './selectedCard';
-import selectedflights from './selectedflights';
 
 
 class availableFlights extends Component {
@@ -41,10 +39,6 @@ class availableFlights extends Component {
       this.state.selectedFlights.splice(value, 1);
     }
     
-  }
-
-  submit(){
-    console.log(this.state.selectedFlights)
   }
 
 

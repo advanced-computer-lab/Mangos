@@ -62,6 +62,12 @@
   color: white;
 }
 
+.UpdateUserInfo {
+  background-color: #0B243A;
+  min-height: 100vh;
+  color: white;
+}
+
 .ShowFlightList {
   background-color: #0B243A;
   height: 100%;

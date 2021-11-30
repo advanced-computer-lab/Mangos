@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { BrowserRouter as Router, Route, Switch,Link} from 'react-router-dom';
-import Logo from '../images/Logo.svg';
-import {
-    Nav,
-    NavLink,
-    Bars,
-    NavMenu,
-    NavBtnLink,
-    NavBtn
-}from '../components/Nav/NavbarElements';
+
 
 const CabinOpt = ["Economy Class", "Business Class", "First Class"]
 const AdultOption = ["1","2","3","4","5","6","7","8","9"];
@@ -57,7 +48,7 @@ class HomeNavbar extends Component{
                 <div className="row">
                     <div className="col-md-8 m-auto">
                     <br />
-                    <h1 className="display-4 text-center">Search Flights</h1>
+                    <h1 className="display-4 text-center">Book A Flight</h1>
                     <p className="lead text-center">
                     <b>Round trip</b>
                     </p>
