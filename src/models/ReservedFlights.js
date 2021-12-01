@@ -1,47 +1,47 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
-  Username: {
+const ReservedFlightSchema = new mongoose.Schema({
+  flightid: {
     type: String,
     required: true
   },
-  Password: {
+  userid : {
     type: String,
     required: true
   },
-  FirstName: {
+  departuretime : {
     type: String,
     required: true
   },
-  LastName: {
+  arrivaltime: {
     type: String,
     required: true
   },
-  HomeAddress: {
+  price:{
     type: String,
     required: true
   },
-  CountryCode: {
-    type: Number,
-    required: true
-  },
-  PhoneNumber: {
-    type: Array,
-    required: true
-  },
-  Email: {
+  from: {
     type: String,
     required: true
   },
-  PassportNumber: {
-    type: Number,
+  to: {
+    type: String,
     required: true
   },
-  isAdmin: {
-    type: Boolean,
-    required: false
+  cabin :{
+    type: String,
+    required: true
+  },
+  adults : {
+    type: String,
+    required: true
+  },
+  children : {
+    type: String,
+    required: true
   }
 });
 
-const User = mongoose.model('user', UserSchema);
-module.exports = User;
+
+module.exports = ReservedFlight = mongoose.model('reservedflight', ReservedFlightSchema);;

@@ -13,6 +13,18 @@ const FlightSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  price: {
+    type: String,
+    required: true
+  },
+  tripduration:{
+    type: String,
+    required: true
+  },
+  baggageallowance:{
+    type: String,
+    required: true
+  },
   airportterminal: {
     type: String,
     required: true

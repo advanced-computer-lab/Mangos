@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import '../../App.css';
 import axios from 'axios';
 
 
@@ -11,6 +11,9 @@ class CreateFlight extends Component {
         flightnumber: '',
         departuretime: '',
         arrivaltime: '',
+        price:'',
+        tripduration:'',
+        baggageallowance:'',
         airportterminal: '',
         from: '',
         to:'',
@@ -30,6 +33,9 @@ class CreateFlight extends Component {
         flightnumber: this.state.flightnumber,
         departuretime: this.state.departuretime,
         arrivaltime: this.state.arrivaltime,
+        price: this.state.price,
+        tripduration: this.state.tripduration,
+        baggageallowance: this.state.baggageallowance,
         airportterminal: this.state.airportterminal,
         from: this.state.from,
         to:this.state.to,
@@ -45,6 +51,9 @@ class CreateFlight extends Component {
             flightnumber: '',
             departuretime: '',
             arrivaltime: '',
+            price: '',
+            tripduration:'',
+            baggageallowance:'',
             airportterminal: '',
             from: '',
             to:'',
@@ -52,7 +61,7 @@ class CreateFlight extends Component {
             Businessseats:'',
             Firstclassseats:''
         })
-        this.props.history.push('/');
+        this.props.history.push('/Admin');
       })
       .catch(err => {
         console.log("Error in CreateFlight!");
@@ -60,6 +69,7 @@ class CreateFlight extends Component {
   };
 
   render() {
+    console.log(this.state.baggageallowance)
     return (
       <div className="CreateFlight">
         <div className="container">
@@ -76,10 +86,11 @@ class CreateFlight extends Component {
                 <b>Add a new flight</b>
               </p>
 
-              <form noValidate onSubmit={this.onSubmit}>
+              <form Validate onSubmit={this.onSubmit}>
                 <div>Flight Number: </div>
               <div className='form-group'>
                   <input
+                    required
                     type='text'
                     placeholder='Flightnumber'
                     name='flightnumber'
@@ -91,6 +102,7 @@ class CreateFlight extends Component {
                 <div>Departure Time: </div>
                 <div className='form-group'>
                   <input
+                    required
                     type='datetime-local'
                     placeholder='Departuretime'
                     name='departuretime'
@@ -102,6 +114,7 @@ class CreateFlight extends Component {
                 <div>Arrival Time: </div>
                 <div className='form-group'>
                   <input
+                    required
                     type='datetime-local'
                     placeholder='Arrivaltime'
                     name='arrivaltime'
@@ -110,9 +123,46 @@ class CreateFlight extends Component {
                     onChange={this.onChange}
                   />
                 </div>
+                <div>Price: </div>
+                <div className='form-group'>
+                  <input
+                    required
+                    type='text'
+                    placeholder='Price'
+                    name='price'
+                    className='form-control'
+                    value={this.state.price}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div>Trip Duration: </div>
+                <div className='form-group'>
+                  <input
+                    required
+                    type='text'
+                    placeholder='TripDuration'
+                    name='tripduration'
+                    className='form-control'
+                    value={this.state.tripduration}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div>Baggage Allowance: </div>
+                <div className='form-group'>
+                  <input
+                    required
+                    type='text'
+                    placeholder='BaggageAllowance'
+                    name='baggageallowance'
+                    className='form-control'
+                    value={this.state.baggageallowance}
+                    onChange={this.onChange}
+                  />
+                </div>
                 <div>Airport terminal: </div>
                 <div className='form-group'>
                   <input
+                    required
                     type='text'
                     placeholder='airportterminal'
                     name='airportterminal'
@@ -124,6 +174,7 @@ class CreateFlight extends Component {
                 <div>From: </div>
                 <div className='form-group'>
                   <input
+                    required
                     type='text'
                     placeholder='From'
                     name='from'
@@ -135,6 +186,7 @@ class CreateFlight extends Component {
                 <div>To: </div>
                 <div className='form-group'>
                   <input
+                    required
                     type='text'
                     placeholder='To'
                     name='to'
@@ -146,6 +198,7 @@ class CreateFlight extends Component {
                 <div>Economy Seats: </div>
                 <div className='form-group'>
                   <input
+                    required
                     type='text'
                     placeholder='number of Economy seats'
                     name='Economyseats'
@@ -157,6 +210,7 @@ class CreateFlight extends Component {
                 <div>Business Seats: </div>
                 <div className='form-group'>
                   <input
+                    required
                     type='text'
                     placeholder='number of Business class seats'
                     name='Businessseats'
@@ -168,6 +222,7 @@ class CreateFlight extends Component {
                 <div>First Seats: </div>
                 <div className='form-group'>
                   <input
+                    required
                     type='text'
                     placeholder='number of First class seats'
                     name='Firstclassseats'

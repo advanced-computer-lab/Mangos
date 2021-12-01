@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import '../../App.css';
 import axios from 'axios';
-import FlightCard from './FlightCard';
+import FlightCard from '../FlightCard';
 
 
 class SearchFlight extends Component {
@@ -108,7 +108,7 @@ class SearchFlight extends Component {
                   />
                 </div>
 
-                <Link to={{pathname:`/SearchPage/`, state: data}}  className="btn btn-outline-info btn-lg btn-block">
+                <Link to={{pathname:`/SearchPage`, state: data}}  className="btn btn-outline-info btn-lg btn-block">
                     Search Flight
               </Link>
                 

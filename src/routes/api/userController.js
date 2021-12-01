@@ -11,16 +11,16 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
   User.find()
-    .then(user => res.json(flights))
-    .catch(err => res.status(404).json({ noflightsfound: 'No users found' }));
+    .then(user => res.json(users))
+    .catch(err => res.status(404).json({ noUsersfound: 'No users found' }));
 });
-//to be updated---
+
 router.get('/:id', (req, res) => {
   User.findById(req.params.id)
-    .then(user => res.json(flight))
-    .catch(err => res.status(404).json({ noflightfound: 'No user found' }));
+    .then(user => res.json(user))
+    .catch(err => res.status(404).json({ noUserfound: 'No user found' }));
 });
-//---
+
 router.put('/:id', (req, res) => {
   User.findByIdAndUpdate(req.params.id, req.body)
     .then(user => res.json({ msg: 'Updated successfully' }))

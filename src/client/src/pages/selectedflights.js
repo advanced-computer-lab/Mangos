@@ -1,10 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import '../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import FlightCard from './FlightCard';
 
-class ShowFlightsList extends Component {
+import Logo from '../images/Logo.svg'
+import {
+    Nav,
+    NavLink,
+    Bars,
+    NavMenu,
+    NavBtnLink,
+    NavBtn
+}from '../components/Nav/NavbarElements';
+import Card from './selectedCard';
+
+
+class selectedflights extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,10 +25,10 @@ class ShowFlightsList extends Component {
   }
 
   componentDidMount() {
+    const  {state}  = this.props.location
     axios
-      .get('http://localhost:8000/api/FlightController')
+      .post('http://localhost:8000/api/FlightController/findids', state)
       .then(res => {
-        this.props.history.push('/show-flights');
         this.setState({
           flights: res.data
         })
@@ -28,34 +40,34 @@ class ShowFlightsList extends Component {
 
 
   render() {
+    const  {cabin}  = this.props.location
+    const  {adults}  = this.props.location
+    const  {children}  = this.props.location
     const flights = this.state.flights;
-    console.log("PrintFlights: " + flights);
     let flightlist;
 
     if(!flights) {
         flightlist = "there is no flight record!";
     } else {
         flightlist = flights.map((flight, k) =>
-        <FlightCard flight={flight} key={k} />
+        <Card flight={flight} cabin={cabin} adults={adults} children={children} key={k} />
       );
     }
 
     return (
       <div className="ShowFlightList">
+        <Nav>
+            <NavLink to="/">
+                <img src={Logo} 
+                width = '120' height = '120' alt='Logo'/>
+            </NavLink>
+            <Bars />
+        </Nav>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
             <br />
-            <h2 className="display-4 text-center">Flights List</h2>
-            </div>
-
-            <div className="col-md-11">
-              <Link to="/create-flight" className="btn btn-outline-warning float-right">
-                + Add New flight
-              </Link>
-              <br />
-              <br />
-              <hr />
+            <h2 className="display-4 text-center">Selected Flights</h2>
             </div>
 
           </div>
@@ -69,4 +81,4 @@ class ShowFlightsList extends Component {
   }
 }
 
-export default ShowFlightsList;
+export default selectedflights;

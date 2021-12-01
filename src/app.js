@@ -5,6 +5,7 @@ var cors = require('cors');
 
 const userController = require('./routes/api/userController');
 const flightController = require('./routes/api/FlightController');
+const ReservedController = require('./routes/api/ReservedController');
 
 const Flight = require('./models/Flight');
 //const User = require('./models/User');
@@ -22,19 +23,19 @@ app.use(express.json({ extended: false }));
 app.get('/', (req, res) => res.send('Hello world!'));
 
 app.use('/api/FlightController', flightController);
+app.use('/api/ReservedController', ReservedController);
 app.use('/api/userController', userController);
-
-
+/*app.get('/test',(req, res) =>
+Flight.find({
+    '_id': [
+        "61a028ae7076e18f2947cb21",
+        "61a028ea7076e18f2947cb23"
+    ]
+})
+.then(flights => res.json(flights))
+.catch(err => res.status(404).json({ noflightsfound: 'No flights found' })));*/
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
 
 
-
-
-/*
-app.get('/view-users',flightController.viewUsers)
-app.get('/get-all-users/:name', userController.getUser)
-app.put('/update-user/:id',userController.updateUser)
-app.delete('/delete-user/:id',userController.deleteUser) 
-*/

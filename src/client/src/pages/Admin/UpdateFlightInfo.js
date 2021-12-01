@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../App.css';
+import '../../App.css';
 
 class UpdateFlightInfo extends Component {
   constructor(props) {
@@ -10,10 +10,12 @@ class UpdateFlightInfo extends Component {
         flightnumber: '',
         departuretime: '',
         arrivaltime: '',
+        price:'',
+        tripduration:'',
+        baggageallowance:'',
         airportterminal: '',
         from: '',
         to:'',
-        //FlightDate:'',
         Economyseats:'',
         Businessseats:'',
         Firstclassseats:''
@@ -28,6 +30,9 @@ class UpdateFlightInfo extends Component {
           flightnumber: res.data.flightnumber,
           departuretime: res.data.departuretime,
           arrivaltime: res.data.arrivaltime,
+          price: res.data.price,
+          tripduration: res.data.tripduration,
+          baggageallowance: res.data.baggageallowance,
           airportterminal: res.data.airportterminal,
           from: res.data.from,
           to: res.data.to,
@@ -52,6 +57,9 @@ class UpdateFlightInfo extends Component {
         flightnumber: this.state.flightnumber,
         departuretime: this.state.departuretime,
         arrivaltime: this.state.arrivaltime,
+        price: this.state.price,
+        tripduration: this.state.tripduration,
+        baggageallowance: this.state.baggageallowance,
         airportterminal: this.state.airportterminal,
         from: this.state.from,
         to:this.state.to,
@@ -91,10 +99,11 @@ class UpdateFlightInfo extends Component {
           </div>
 
           <div className="col-md-8 m-auto">
-          <form noValidate onSubmit={this.onSubmit}>
+          <form Validate onSubmit={this.onSubmit}>
             <div className='form-group'>
               <label htmlFor="Flightnumber">Flight number</label>
               <input
+                required
                 type='text'
                 placeholder='Flightnumber'
                 name='flightnumber'
@@ -107,6 +116,7 @@ class UpdateFlightInfo extends Component {
             <div className='form-group'>
               <label htmlFor="Departuretime">Departure time</label>
               <input
+                required
                 type='datetime-local'
                 placeholder='Departuretime'
                 name='departuretime'
@@ -119,6 +129,7 @@ class UpdateFlightInfo extends Component {
             <div className='form-group'>
               <label htmlFor="Arrivaltime">Arrival time</label>
               <input
+                required
                 type='datetime-local'
                 placeholder='Arrivaltime'
                 name='arrivaltime'
@@ -127,10 +138,50 @@ class UpdateFlightInfo extends Component {
                 onChange={this.onChange}
               />
             </div>
+            <br />
+            <div className='form-group'>
+              <label htmlFor="Price">Price</label>
+              <input
+                required
+                type='text'
+                placeholder='Price'
+                name='price'
+                className='form-control'
+                value={this.state.price}
+                onChange={this.onChange}
+              />
+            </div>
+            <br />
+            <div className='form-group'>
+              <label htmlFor="TripDuration">Trip Duration</label>
+              <input
+                required
+                type='text'
+                placeholder='TripDuration'
+                name='tripduration'
+                className='form-control'
+                value={this.state.tripduration}
+                onChange={this.onChange}
+              />
+            </div>
+            <br />
+            <div className='form-group'>
+              <label htmlFor="BaggageAllowance">Baggage Allowance</label>
+              <input
+                required
+                type='text'
+                placeholder='BaggageAllowance'
+                name='baggageallowance'
+                className='form-control'
+                value={this.state.baggageallowance}
+                onChange={this.onChange}
+              />
+            </div>
             <br />            
             <div className='form-group'>
               <label htmlFor="airportterminal">Airport terminal</label>
               <input
+                required
                 type='text'
                 placeholder='airportterminal'
                 name='airportterminal'
@@ -143,6 +194,7 @@ class UpdateFlightInfo extends Component {
             <div className='form-group'>
               <label htmlFor="from">From</label>
               <input
+                required
                 type='text'
                 placeholder='from'
                 name='from'
@@ -156,6 +208,7 @@ class UpdateFlightInfo extends Component {
             <div className='form-group'>
             <label htmlFor="to">To</label>
               <input
+                required
                 type='text'
                 placeholder='to'
                 name='to'
@@ -164,10 +217,10 @@ class UpdateFlightInfo extends Component {
                 onChange={this.onChange}
               />
             </div>
-
             <div className='form-group'>
             <label htmlFor="Economyseats">number of Economy seats</label>
               <input
+                required
                 type='text'
                 placeholder='number of Economy seats'
                 name='Economyseats'
@@ -179,6 +232,7 @@ class UpdateFlightInfo extends Component {
             <div className='form-group'>
             <label htmlFor="Businessseats">number of Business class seats</label>
               <input
+                required
                 type='text'
                 placeholder='number of Business class seats'
                 name='Businessseats'
@@ -190,6 +244,7 @@ class UpdateFlightInfo extends Component {
             <div className='form-group'>
             <label htmlFor="Firstclassseats">number of First class seats</label>
               <input
+                required
                 type='text'
                 placeholder='number of First class seats'
                 name='Firstclassseats'

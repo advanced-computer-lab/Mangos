@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -32,37 +33,70 @@
   }
 }
 
+.HomePage{
+  background-color: #0B243A;
+  min-height: 100vh;
+  color: white;
+}
+
 .CreateFlight {
-  background-color: #2c3e50;
+  background-color: #0B243A;
   min-height: 100vh;
   color: white;
 }
 .SearchFlight{
-  background-color: #2c3e50;
+  background-color: #0B243A;
   min-height: 100vh;
   color: white;
 }
 
 .showFlightDetails {
-  background-color: #2c3e50;
+  background-color: #0B243A;
   min-height: 100vh;
   color: white;
 }
 
 .UpdateFlightInfo {
-  background-color: #2c3e50;
+  background-color: #0B243A;
+  min-height: 100vh;
+  color: white;
+}
+
+.UpdateUserInfo {
+  background-color: #0B243A;
   min-height: 100vh;
   color: white;
 }
 
 .ShowFlightList {
-  background-color: #2c3e50;
+  background-color: #0B243A;
   height: 100%;
   width: 100%;
   min-height: 100vh;
   min-width: 100px;
   color: white;
 }
+
+.Login {
+  background-color: #0B243A;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 100px;
+  color: white;
+}
+
+.adminhome {
+  background-color: #0B243A;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 100px;
+  color: #ffffff;
+}
+
+
+           
 
 
 .list {
@@ -81,9 +115,18 @@
   overflow: hidden;
 }
 
-.desc {
+.card-container2 {
+  width: 300px;
+  border: 1px solid rgba(0,0,.125);
+  margin: 0 auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.desc h1{
   height: 500px;
   padding: 10px;
+  margin: 0 auto;
 }
 
 .desc h2 {
