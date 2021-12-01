@@ -16,6 +16,7 @@ const SelectedCard = (props) => {
                 <h3>To: {flight.to}</h3>
                 <h3>Departure time: {flight.departuretime}</h3>
                 <h3>Arrival time: {flight.arrivaltime}</h3>
+                <h3>Price: {flight.price}</h3>
                 <h3>Cabin: {cabin}</h3>
                 <h3>Adults: {adults}</h3>
                 <h3>Children: {children}</h3>

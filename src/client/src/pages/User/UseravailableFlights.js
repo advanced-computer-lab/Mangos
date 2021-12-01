@@ -129,10 +129,6 @@ class UseravailableFlights extends Component {
     const data = this.state;
     const flights = this.state.flights;
     const flights2 = this.state.flights2;
-    console.log("selected: " + data);
-    console.log("PrintFlights1: " + flights);
-    console.log("PrintFlights2: " + flights2);
-
     return (
     
       <div className="ShowFlightList">
@@ -205,7 +201,7 @@ class UseravailableFlights extends Component {
             </table>
           </div>
           <div className="col-md-11">
-              <Link to={{pathname:`/UserSelectedFlights`, state: data.selectedFlights, cabin:Cabin, adults:Adults, children: Children}} className="btn btn-outline-warning float-right">
+              <Link to={{pathname:`/UserSelectedFlights`, state:data.selectedFlights, cabin:Cabin, adults:Adults, children: Children}} className="btn btn-outline-warning float-right">
                 Show Selected flights
               </Link>
               <br />

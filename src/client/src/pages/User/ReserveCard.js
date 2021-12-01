@@ -4,6 +4,7 @@ import axios from 'axios';
 import { confirm } from "react-confirm-box";
 import '../../App.css';
 
+const clicked = false;
 class ReserveCard extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,7 @@ class ReserveCard extends Component {
   async onSubmit (data) {
     const result = await confirm("Are you sure?");
     if (result) {
+      
       console.log(data)
       axios
         .get('http://localhost:8000/api/FlightController/'+data.flightid)
@@ -37,14 +39,17 @@ class ReserveCard extends Component {
         .catch(err => {
           console.log("Error from Reserve Card");
         })
+        
       axios
         .post('http://localhost:8000/api/ReservedController/Delete', data)
         .then(res => {
           console.log("Deleted")
+          
         })
         .catch(err => {
           console.log("not Deleted");
         })
+      alert("Your reservation has been canceled"+"\n"+"Refresh The page")
     }
     else{
       
@@ -53,6 +58,7 @@ class ReserveCard extends Component {
   
 
   render() {
+    
     const flight = this.props.flight
     const data = {
       _id : this.props.flight._id,
@@ -73,6 +79,7 @@ class ReserveCard extends Component {
                 <h3>To: {flight.to}</h3>
                 <h3>Departure time: {flight.departuretime}</h3>
                 <h3>Arrival time: {flight.arrivaltime}</h3>
+                <h3>Price: {flight.price}</h3>
                 <h3>Cabin: {flight.cabin}</h3>
                 <h3>Adults: {flight.adults}</h3>
                 <h3>Children: {flight.children}</h3>
@@ -81,7 +88,7 @@ class ReserveCard extends Component {
                         Show details
                     </Link>
                 </h2>
-                <button type="button" className="btn btn-outline-danger btn-lg btn-block" onClick={this.onSubmit.bind(this,data)}>
+                <button type="button" className="btn btn-outline-danger btn-lg btn-block" onClick={this.onSubmit.bind(this,data)}  >
                   Cancel Reserve</button><br />
             </form>
         </div>);

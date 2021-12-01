@@ -57,14 +57,14 @@ router.post('/Change', (req, res) => {
       break;
     case 'Business Class':
       totalseats = req.body[1].Businessseats;
-      final = totalseats - total; 
+      final = totalseats + total; 
       Flight.findByIdAndUpdate(flightid,{Businessseats:final})
       .then(flight => res.json({ mgs: 'flight entry updated successfully' }))
       .catch(err => res.status(404).json({ error: 'No such a flight' }));
       break;
     case 'First Class':
       totalseats = req.body[1].Firstclassseats;
-      final = totalseats - total; 
+      final = totalseats + total; 
       Flight.findByIdAndUpdate(flightid,{Firstclassseats:final})
       .then(flight => res.json({ mgs: 'flight entry updated successfully' }))
       .catch(err => res.status(404).json({ error: 'No such a flight' }));

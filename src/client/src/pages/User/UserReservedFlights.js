@@ -21,7 +21,7 @@ class UserReservedFlights extends Component {
         })
       })
       .catch(err =>{
-        console.log('Error from ShowFlightsList');
+        console.log('Error from UserReservedFlights');
       })
   };
 
@@ -29,15 +29,24 @@ class UserReservedFlights extends Component {
   render() {
     const flights = this.state.flights;
     let flightlist;
+    let totalprice;
+    let ticketprice = 0 ;
+    var hidden = 'visible';
 
     if(!flights) {
         flightlist = "there is no flight record!";
     } else {
         flightlist = flights.map((flight, k) =>
-        <Card flight={flight} key={k} />
-      );
+        <Card flight={flight} key={k} />);
+        totalprice = flights.map((flight, k) => ticketprice += parseInt(flight.price) );
     }
-
+    if(ticketprice != 0){
+      hidden = 'visible'
+    }
+    else{
+      hidden = 'hidden'
+    }
+    console.log(ticketprice)
     return (
       <div className="ShowFlightList">
         <div className="container">
@@ -51,6 +60,9 @@ class UserReservedFlights extends Component {
 
           <div className="list">
                 {flightlist}
+          </div>
+          <div className="list">
+            <h3 style={{visibility: hidden}}>the total price of the entire ticket {ticketprice}</h3>
           </div>
         </div>
       </div>

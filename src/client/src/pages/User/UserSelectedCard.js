@@ -35,6 +35,7 @@ class UserSelectedCard extends Component {
         .catch(err => {
           console.log("not Added");
         })
+        alert("Your reservation has been Added")
     }
   };
   
@@ -51,6 +52,7 @@ class UserSelectedCard extends Component {
       to : flight.to,
       departuretime : flight.departuretime,
       arrivaltime : flight.arrivaltime,
+      price : flight.price,
       cabin : cabin,
       adults : adults,
       children : children
@@ -62,6 +64,7 @@ class UserSelectedCard extends Component {
                 <h3>To: {flight.to}</h3>
                 <h3>Departure time: {flight.departuretime}</h3>
                 <h3>Arrival time: {flight.arrivaltime}</h3>
+                <h3>Price: {flight.price}</h3>
                 <h3>Cabin: {cabin}</h3>
                 <h3>Adults: {adults}</h3>
                 <h3>Children: {children}</h3>
