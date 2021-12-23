@@ -32,7 +32,8 @@ import selectedflights from './pages/selectedflights';
 import availableflights from './pages/availableFlights';
 //---
 
-import Login from './pages/SignIn';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 
 
@@ -46,7 +47,8 @@ class App extends Component {
           <Route exact path='/selectedflights' component={selectedflights}/>
           <Route exact path='/availableFlights' component={availableflights}/> 
 
-          <Route exact path='/SignIn' component={Login} />
+          <Route exact path='/Login' component={Login} />
+          <Route exact path='/Register' component={Register} />
           
           <Route exact path='/User' component={User} />
           <Route exact path='/Account' component={Account,UserNavbar} />
