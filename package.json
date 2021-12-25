@@ -17,13 +17,16 @@
   },
   "homepage": "https://github.com/advanced-computer-lab/Mangos#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "browser-history": "^1.0.1",
     "config": "^3.3.6",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12",
+    "nodemailer": "^6.7.2",
     "react-icons": "^4.3.1",
     "validation": "0.0.1"
   },

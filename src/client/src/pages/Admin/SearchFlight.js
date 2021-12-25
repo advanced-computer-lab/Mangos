@@ -29,6 +29,9 @@ class SearchFlight extends Component {
 
   render() {
     const data = this.state;
+    const pathname = this.props.location.pathname;
+    const id = pathname.split('/')[2]
+    console.log(id)
     return (
       <div className="SearchFlight">
         <div className="container">
@@ -108,7 +111,7 @@ class SearchFlight extends Component {
                   />
                 </div>
 
-                <Link to={{pathname:`/SearchPage`, state: data}}  className="btn btn-outline-info btn-lg btn-block">
+                <Link to={{pathname:`/SearchPage/${id}`, state: data}}  className="btn btn-outline-info btn-lg btn-block">
                     Search Flight
               </Link>
                 

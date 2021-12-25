@@ -83,7 +83,35 @@
   width: 100%;
   min-height: 100vh;
   min-width: 100px;
+  color: #ffffff;
+}
+
+.loginbutton{
+  color: black;
+  margin-left: 270px;
+}
+
+.Register{
+  background-color: #0B243A;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 100px;
   color: white;
+}
+.group{
+  background-color: #0B243A;
+  color: white;
+  margin: auto;
+  width: 35vh;
+  margin-left: 340px;
+}
+.Register-group{
+  background-color: #0B243A;
+  color: white;
+  margin: auto;
+  width: 25vh;
+  margin-left: 340px;
 }
 
 .adminhome {

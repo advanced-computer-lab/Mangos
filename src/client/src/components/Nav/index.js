@@ -18,36 +18,41 @@ import SearchFlight from '../../pages/Admin/SearchFlight';
 import ShowFlightDetails from '../../pages/Admin/ShowFlightDetails';
 import UpdateFlightInfo from '../../pages/Admin/UpdateFlightInfo';
 
+import {useLocation} from "react-router-dom";
+
 const Navbar = () => {
+    const pathname = useLocation().pathname;
+    const id = pathname.split('/')[2]
+    console.log(id)
     return(
         <>
             <Nav>
-                <NavLink to="/Admin">
+                <NavLink to={`/Admin/${id}`}>
                     <img src={Logo} 
                     width = '120' height = '120' alt='Logo'/>
                 </NavLink>
                 <Bars />
                 <NavMenu>
-                    <NavLink to= "/SearchFlight" activestyle>
+                    <NavLink to= {`/SearchFlight/${id}`} activestyle>
                         Search
                     </NavLink>
-                    <NavLink to="/show-flights" activestyle>
+                    <NavLink to={`/show-flights/${id}`} activestyle>
                         ShowAllFlights
                     </NavLink>
-                    <NavLink to="/create-flight" activestyle>
+                    <NavLink to={`/create-flight/${id}`} activestyle>
                         Add flight
                     </NavLink>
                     
                 </NavMenu>
                 
             </Nav>
-            <Route exact path='/Admin' component={adminhome}/>
-            <Route exact path='/show-flights'  component={ShowFlightsList}/>
-            <Route exact path='/SearchFlight' component={SearchFlight}/>
-            <Route exact path='/create-flight' component={CreateFlight}/>
-            <Route exact path='/edit-flight/:id' component={UpdateFlightInfo}/>
+            <Route exact path={`/Admin/${id}`} component={adminhome}/>
+            <Route exact path={`/show-flights/${id}`}  component={ShowFlightsList}/>
+            <Route exact path={`/SearchFlight/${id}`} component={SearchFlight}/>
+            <Route exact path={`/create-flight/${id}`} component={CreateFlight}/>
+            <Route exact path={`/edit-flight/:id/${id}`} component={UpdateFlightInfo}/>
             <Route exact path='/show-flight/:id' component={ShowFlightDetails}/>
-            <Route exact path='/SearchPage' component={SearchPage}/>
+            <Route exact path= {`/SearchPage/${id}`} component={SearchPage}/>
         </>
     );
 };

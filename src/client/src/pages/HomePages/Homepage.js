@@ -8,7 +8,7 @@ class homepage extends Component {
     render() {
         return (
           <Router>
-                <h1>home</h1>
+                
           </Router>
         );
       }

@@ -60,7 +60,7 @@ class HomeNavbar extends Component{
                 <Bars />
                 
                 <NavBtn>
-                    <NavBtnLink to='/SignIn'>SignIn</NavBtnLink>
+                    <NavBtnLink to='/Login'>SignIn</NavBtnLink>
                 </NavBtn>
             </Nav>
                 <div className="SearchFlight">

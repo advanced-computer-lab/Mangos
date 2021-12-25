@@ -13,8 +13,10 @@ class UserReservedFlights extends Component {
   }
 
   componentDidMount() {
+    const pathname = this.props.location.pathname;
+    const id = pathname.split('/')[2];
     axios
-      .get('http://localhost:8000/api/ReservedController/')
+      .get('http://localhost:8000/api/ReservedController/'+id)
       .then(res => {
         this.setState({
           flights: res.data
@@ -27,7 +29,9 @@ class UserReservedFlights extends Component {
 
 
   render() {
+    
     const flights = this.state.flights;
+    console.log(flights)
     let flightlist;
     let totalprice;
     let ticketprice = 0 ;

@@ -4,6 +4,9 @@ import axios from 'axios';
 import { confirm } from "react-confirm-box";
 import '../../App.css';
 
+
+// Step 1
+
 class UserSelectedCard extends Component {
   constructor(props) {
     super(props);
@@ -35,9 +38,21 @@ class UserSelectedCard extends Component {
         .catch(err => {
           console.log("not Added");
         })
-        alert("Your reservation has been Added")
+      axios
+        .post('http://localhost:8000/api/userController/emailAgain',data)
+        .then(res => {
+          console.log("emailed")
+        })
+        .catch(err => {
+          console.log("error email");
+        })
+        alert("Your reservation has been Added, Please Pay")
+        window.location.replace("/pay");
     }
   };
+   onSubmit2 (data) {
+    
+   }
   
 
   render() {
