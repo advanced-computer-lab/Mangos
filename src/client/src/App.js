@@ -32,6 +32,7 @@ import Homepage from './pages/HomePages/Homepage.js';
 import FlightDetails from './pages/showdetails';
 import selectedflights from './pages/selectedflights';
 import availableflights from './pages/availableFlights';
+import Payment from './pages/User/Payment';
 //---
 
 import Login from './pages/Login';
@@ -60,6 +61,7 @@ const App = props => {
             <Route exact path='/UserSelectedFlights/:id' component={(UserSelectedFlights, UserNavbar)} />
             <Route exact path='/UseravailableFlights/:id' component={(UseravailableFlights, UserNavbar)} />
             <Route exact path='/ReservedFlights/:id' component={(UserReservedFlights, UserNavbar)} />
+            <Route exact path='/pay' component={(Payment)} />
 
 
             <Route exact path='/Admin/:id' component={admin} />

@@ -59,7 +59,7 @@ class ReserveCard extends Component {
     const result3 = await confirm("Are you sure?");
     if (result3) {
       axios
-        .post('http://localhost:8000/api/userController/emailAgain%27',data)
+        .post('http://localhost:8000/api/userController/emailAgain',data)
         .then(res => {
           console.log("Emailed")
         })
