@@ -13,8 +13,10 @@ class Account extends Component {
   }
   
   componentDidMount() {
+    const pathname = this.props.location.pathname;
+    const id = pathname.split('/')[2];
     axios
-      .get('http://localhost:8000/api/userController/'+"61c6236a1af38fc49ca03ffc")
+      .get('http://localhost:8000/api/userController/'+id)
       .then(res => {
         this.setState({
             user: res.data
@@ -26,7 +28,8 @@ class Account extends Component {
   };
 
   render() {
-
+    const pathname = this.props.location.pathname;
+    const id = pathname.split('/')[2];
     const user = this.state.user;
     let userItem = <div>
       <table className="table table-hover table-dark">
@@ -97,7 +100,7 @@ class Account extends Component {
 
           <div className="row">
             <div className="col-md-6 m-auto">
-              <Link to={`/UpdateUserInfo/61a67dd64525d0e4b4e1b6a9`} className="btn btn-outline-info btn-lg btn-block">
+              <Link to={`/UpdateUserInfo/${id}`} className="btn btn-outline-info btn-lg btn-block">
                     Edit my profile
               </Link>
               <br />

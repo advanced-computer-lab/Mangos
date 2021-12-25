@@ -44,7 +44,7 @@ const Userindex = props => {
             </Nav>
             <Route exact path={`/User/${id}`} component={userhome} />
             <Route exact path={`/Account/${id}`} component={Account} />
-            <Route exact path='/UpdateUserInfo' component={UpdateUserInfo} />
+            <Route exact path={`/UpdateUserInfo/${id}`} component={UpdateUserInfo} />
             <Route exact path={`/ReservedFlights/${id}`} component={UserReservedFlights}/>
             <Route exact path={`/UseravailableFlights/${id}`} component={UseravailableFlights}/>
             <Route exact path={`/UserSelectedFlights/${id}`} component={UserSelectedFlights}/>

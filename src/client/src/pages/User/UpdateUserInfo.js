@@ -20,8 +20,10 @@ class UpdateUserInfo extends Component {
   }
 
   componentDidMount() {
+    const pathname = this.props.location.pathname;
+    const id = pathname.split('/')[2];
     axios
-      .get('http://localhost:8000/api/userController/'+'61a67dd64525d0e4b4e1b6a9')
+      .get('http://localhost:8000/api/userController/'+id)
       .then(res => {
         this.setState({
           Username: res.data.Username,
@@ -58,9 +60,10 @@ class UpdateUserInfo extends Component {
       Email: this.state.Email,
       PassportNumber: this.state.PassportNumber
     };
-
+    const pathname = this.props.location.pathname;
+    const id = pathname.split('/')[2];
     axios
-      .put('http://localhost:8000/api/userController/'+'61a67dd64525d0e4b4e1b6a9', data)
+      .put('http://localhost:8000/api/userController/'+id, data)
       .then(res => {
         this.props.history.push('/Account');
       })
@@ -90,19 +93,6 @@ class UpdateUserInfo extends Component {
                 name='Username'
                 className='form-control'
                 value={this.state.Username}
-                onChange={this.onChange}
-              />
-            </div>
-            <br />
-            <div className='form-group'>
-              <label htmlFor="Password">Password</label>
-              <input
-                required
-                type='text'
-                placeholder='Password'
-                name='Password'
-                className='form-control'
-                value={this.state.Password}
                 onChange={this.onChange}
               />
             </div>

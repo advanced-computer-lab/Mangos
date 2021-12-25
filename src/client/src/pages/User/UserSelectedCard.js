@@ -47,7 +47,7 @@ class UserSelectedCard extends Component {
           console.log("error email");
         })
         alert("Your reservation has been Added, Please Pay")
-        window.location.replace("/Pay");
+        window.location.replace("/pay");
     }
   };
    onSubmit2 (data) {

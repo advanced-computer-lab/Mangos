@@ -8,7 +8,7 @@ const StripeCheckoutButton = ({ price }) => {
     const onToken = token => {
         console.log(token);
         alert('Payment Succesful!');
-        window.location.replace("ReservedFlights/");
+        window.location.replace("/");
     };
 
     return (
