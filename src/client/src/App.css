@@ -99,6 +99,13 @@
   min-width: 100px;
   color: white;
 }
+.group{
+  background-color: #0B243A;
+  color: white;
+  margin: auto;
+  width: 35vh;
+  margin-left: 340px;
+}
 .Register-group{
   background-color: #0B243A;
   color: white;

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
+import { useState,useEffect } from 'react';
 import './App.css';
 
 //Admin
@@ -37,40 +39,41 @@ import Register from './pages/Register';
 
 
 
-class App extends Component {
-  render() {
-    return (
+const App = props => {
+
+  return (
+    <div>
       <Router>
-        <div>
-          <Route exact path='/' component={Homepage,HomeNavbar}/>
-          <Route exact path='/flightdetails/:id' component={FlightDetails}/>
-          <Route exact path='/selectedflights' component={selectedflights}/>
-          <Route exact path='/availableFlights' component={availableflights}/> 
+      <Switch>
+          <Route exact path='/' component={(Homepage, HomeNavbar)} />
+          <Route exact path='/flightdetails/:id' component={FlightDetails} />
+          <Route exact path='/selectedflights' component={selectedflights} />
+          <Route exact path='/availableFlights' component={availableflights} /> 
 
           <Route exact path='/Login' component={Login} />
           <Route exact path='/Register' component={Register} />
-          
-          <Route exact path='/User' component={User} />
-          <Route exact path='/Account' component={Account,UserNavbar} />
-          <Route exact path='/UpdateUserInfo/:id' component={UpdateUserInfo,UserNavbar} />
-          <Route exact path='/UserFlightDetails/:id' component={UserFlightDetails,UserNavbar}/>
-          <Route exact path='/UserSelectedFlights' component={UserSelectedFlights,UserNavbar}/>
-          <Route exact path='/UseravailableFlights' component={UseravailableFlights,UserNavbar}/>
-          <Route exact path='/ReservedFlights' component={UserReservedFlights,UserNavbar}/>
-          
+          <div>
+            <Route exact path='/User' component={User} />
+            <Route exact path='/Account' component={(Account, UserNavbar)} />
+            <Route exact path='/UpdateUserInfo/:id' component={(UpdateUserInfo, UserNavbar)} />
+            <Route exact path='/UserFlightDetails/:id' component={(UserFlightDetails, UserNavbar)} />
+            <Route exact path='/UserSelectedFlights' component={(UserSelectedFlights, UserNavbar)} />
+            <Route exact path='/UseravailableFlights' component={(UseravailableFlights, UserNavbar)} />
+            <Route exact path='/ReservedFlights' component={(UserReservedFlights, UserNavbar)} />
 
-          <Route exact path='/Admin' component={admin} />
-          <Route exact path='/show-flights'  component={ShowFlightsList,Navbar}/>
-          <Route exact path='/SearchFlight' component={SearchFlight,Navbar}/>
-          <Route exact path='/create-flight' component={CreateFlight,Navbar}/>
-          <Route exact path='/edit-flight/:id' component={UpdateFlightInfo,Navbar}/>
-          <Route exact path='/show-flight/:id' component={ShowFlightDetails,Navbar}/>
-          <Route exact path='/SearchPage' component={SearchPage,Navbar}/>
-          
-        </div>
+
+            <Route exact path='/Admin' component={admin} />
+            <Route exact path='/show-flights' component={(ShowFlightsList, Navbar)} />
+            <Route exact path='/SearchFlight' component={(SearchFlight, Navbar)} />
+            <Route exact path='/create-flight' component={(CreateFlight, Navbar)} />
+            <Route exact path='/edit-flight/:id' component={(UpdateFlightInfo, Navbar)} />
+            <Route exact path='/show-flight/:id' component={(ShowFlightDetails, Navbar)} />
+            <Route exact path='/SearchPage'  component={(SearchPage, Navbar)} /> 
+          </div>
+        </Switch>
       </Router>
-    );
-  }
-}
+    </div>
+    )
+};
 
 export default App;

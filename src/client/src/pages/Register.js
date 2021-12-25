@@ -1,9 +1,15 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 import "../App.css";
+import Logo from '../images/Logo.svg';
+import {
+  Nav,
+  NavLink
+}from '../components/Nav/NavbarElements';
 
 import AuthService from "./services/auth.service";
 
@@ -203,23 +209,13 @@ export default class Register extends Component {
         this.state.email,
         this.state.passportnumber 
       ).then(
-        response => {
-          this.setState({
-            message: response.data.message,
-            successful: true
-          });
+        res => {
+          window.location.replace("/Login");
         },
         error => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-
           this.setState({
             successful: false,
-            message: resMessage
+            message: error.response.data
           });
         }
       );
@@ -229,6 +225,11 @@ export default class Register extends Component {
   render() {
     return (
       <div className="Register">
+        <Nav>
+          <NavLink to="/">
+            <img src={Logo}  width = '120' height = '120' alt='Logo'/>
+          </NavLink>
+        </Nav>
       <div className="col-md-12">
         <div className="container">
           <Form
@@ -343,8 +344,13 @@ export default class Register extends Component {
                 </div>
                 <br/>
                 <div className="Register-group">
-                  <button className="btn btn-primary btn-block">Sign Up</button>
+                  <button className="btn btn-outline-info btn-lg btn-block">Sign Up</button>
                 </div>
+                <div className="group">
+                  <Link to={`/Login`} className="btn btn-outline-info btn-lg btn-block">
+                    Return to Login
+                  </Link>
+               </div>
               </div>
             )}
 

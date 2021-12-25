@@ -21,7 +21,7 @@ class Account extends Component {
         })
       })
       .catch(err => {
-        console.log("Error from showFlightDetails");
+        console.log("Error from Account");
       })
   };
 

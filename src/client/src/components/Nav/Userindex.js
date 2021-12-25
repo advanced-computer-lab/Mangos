@@ -28,7 +28,7 @@ const Userindex = () => {
                 </NavLink>
                 <Bars />
                 <NavMenu>
-                    <NavLink to= "/ReservedFlights" activestyle>
+                    <NavLink to= "/ReservedFlights/:id" activestyle>
                         Reserved Flights
                     </NavLink>
                     <NavLink to="/Account" activestyle>
@@ -39,7 +39,7 @@ const Userindex = () => {
 
             <Route exact path='/User' component={userhome} />
             <Route exact path='/Account' component={Account} />
-            <Route exact path='/UpdateUserInfo/:id' component={UpdateUserInfo} />
+            <Route exact path='/UpdateUserInfo' component={UpdateUserInfo} />
             <Route exact path='/ReservedFlights' component={UserReservedFlights}/>
             <Route exact path='/UseravailableFlights' component={UseravailableFlights}/>
             <Route exact path='/UserSelectedFlights' component={UserSelectedFlights}/>

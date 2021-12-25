@@ -1,9 +1,20 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import "../App.css";
+import { Link } from "react-router-dom";
+import Logo from '../images/Logo.svg';
+import {
+  Nav,
+  NavLink
+}from '../components/Nav/NavbarElements';
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      message: ""
+    };
+  }
   handleSubmit = e => {
     e.preventDefault();
 
@@ -19,18 +30,23 @@ class Login extends Component {
       const password = e.target.password.value;
       const data = {username,password}
       axios
-      .post('http://localhost:8000/api/userController/login',data)
+      .post('http://localhost:8000/api/authRoutes/login',data)
       .then(res => {
-        if(res.data.isAdmin){
-          window.location.replace("/Admin");
+        if(res.data == "incorrect username and/or password"){
+          this.setState({
+            message: "incorrect username and/or password",
+          });
         }
         else{
-          window.location.replace("/User");
+          if(res.data.user.isAdmin){
+            window.location.replace("/Admin");
+          }
+          if(!res.data.user.isAdmin){
+            window.location.replace("/User");
+          }
         }
-        alert("Successfully logged in");
       })
       .catch(err => {
-        alert("incorrect username and/or password");
         console.log("Error from login");
       })
       
@@ -48,6 +64,12 @@ class Login extends Component {
   render() {
     return (
       <div className="Login">
+        <Nav>
+          <NavLink to="/">
+            <img src={Logo}  width = '120' height = '120' alt='Logo'/>
+          </NavLink>
+        </Nav>
+        
         <div className="container">
           <div className="row">
             <div className="col-md-4 m-auto">
@@ -64,11 +86,25 @@ class Login extends Component {
                 <h4 htmlFor="password" >Password :</h4>
                 <input type="password" name="password" required />
                 </div>
+                {this.state.message && (
+                <div className="form-group">
+                <div
+                  className={
+                    this.state.successful
+                      ? "alert alert-success"
+                      : "alert alert-danger"
+                  }
+                  role="alert"
+                >
+                  {this.state.message}
+                </div>
+              </div>
+            )}
                 <br/>
-                  <button className="loginbutton" >Login</button>           
+                  <button className="btn btn-outline-info btn-lg btn-block" >Login</button>           
               </form>
               <br/>
-              <button className="register" onClick={this.handleClick}>
+              <button className="btn btn-outline-info btn-lg btn-block" onClick={this.handleClick}>
                 Register
               </button>
                     
