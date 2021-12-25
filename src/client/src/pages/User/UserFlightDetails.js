@@ -13,8 +13,10 @@ class UserFlightDetails extends Component {
   }
 
   componentDidMount() {
+    const pathname = this.props.location.pathname;
+    const id = pathname.split('/')[2];
     axios
-      .get('http://localhost:8000/api/FlightController/'+this.props.match.params.id)
+      .get('http://localhost:8000/api/FlightController/'+id)
       .then(res => {
         this.setState({
             flight: res.data

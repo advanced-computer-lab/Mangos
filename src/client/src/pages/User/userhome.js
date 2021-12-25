@@ -41,6 +41,8 @@ class HomeNavbar extends Component{
     
     render(){
         const data = this.state;
+        const pathname = this.props.location.pathname;
+        const id = pathname.split('/')[2];
         return(
             <div className='HomePage'>
                 <div className="SearchFlight">
@@ -129,7 +131,7 @@ class HomeNavbar extends Component{
                         <br/>
                         <br/>
 
-                        <Link to={{pathname:`/UseravailableFlights`, state: data}}  className="btn btn-outline-info btn-lg btn-block">
+                        <Link to={{pathname:`/UseravailableFlights/${id}`, state: data,id:id}}  className="btn btn-outline-info btn-lg btn-block">
                             Search
                         </Link>
                         

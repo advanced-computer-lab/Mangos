@@ -55,6 +55,19 @@ class ReserveCard extends Component {
       
     }
   };
+  async onSubmit2 (data) {
+    const result3 = await confirm("Are you sure?");
+    if (result3) {
+      axios
+        .post('http://localhost:8000/api/userController/emailAgain%27',data)
+        .then(res => {
+          console.log("Emailed")
+        })
+        .catch(err => {
+          console.log("not Updated");
+        });
+      }
+  };
   
 
   render() {
@@ -90,6 +103,8 @@ class ReserveCard extends Component {
                 </h2>
                 <button type="button" className="btn btn-outline-danger btn-lg btn-block" onClick={this.onSubmit.bind(this,data)}  >
                   Cancel Reserve</button><br />
+                  <button type="button" className="btn btn-outline-success btn-lg btn-block" onClick={this.onSubmit2.bind(this,data)}  >
+                  Email Summary</button>
             </form>
         </div>);
   }

@@ -39,10 +39,10 @@ class Login extends Component {
         }
         else{
           if(res.data.user.isAdmin){
-            window.location.replace("/Admin");
+            window.location.replace("/Admin/"+res.data.user._id);
           }
           if(!res.data.user.isAdmin){
-            window.location.replace("/User");
+            window.location.replace("/User/"+res.data.user._id);
           }
         }
       })

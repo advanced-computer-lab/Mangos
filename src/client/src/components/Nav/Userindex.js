@@ -18,31 +18,36 @@ import UseravailableFlights from '../../pages/User/UseravailableFlights';
 import UserSelectedFlights from '../../pages/User/UserSelectedFlights';
 import UserFlightDetails from '../../pages/User/UserFlightDetails';
 
-const Userindex = () => {
+
+import {useLocation} from "react-router-dom";
+
+const Userindex = props => {
+    const pathname = useLocation().pathname;
+    const id = pathname.split('/')[2]
+    console.log(id)
     return(
         <>
             <Nav>
-                <NavLink to="/User">
+                <NavLink to={`/User/${id}`}>
                     <img src={Logo} 
                     width = '120' height = '120' alt='Logo'/>
                 </NavLink>
                 <Bars />
                 <NavMenu>
-                    <NavLink to= "/ReservedFlights/:id" activestyle>
+                    <NavLink to= {`/ReservedFlights/${id}`} activestyle>
                         Reserved Flights
                     </NavLink>
-                    <NavLink to="/Account" activestyle>
+                    <NavLink to={`/Account/${id}`} activestyle>
                         Account
                     </NavLink>
                 </NavMenu>
             </Nav>
-
-            <Route exact path='/User' component={userhome} />
-            <Route exact path='/Account' component={Account} />
+            <Route exact path={`/User/${id}`} component={userhome} />
+            <Route exact path={`/Account/${id}`} component={Account} />
             <Route exact path='/UpdateUserInfo' component={UpdateUserInfo} />
-            <Route exact path='/ReservedFlights' component={UserReservedFlights}/>
-            <Route exact path='/UseravailableFlights' component={UseravailableFlights}/>
-            <Route exact path='/UserSelectedFlights' component={UserSelectedFlights}/>
+            <Route exact path={`/ReservedFlights/${id}`} component={UserReservedFlights}/>
+            <Route exact path={`/UseravailableFlights/${id}`} component={UseravailableFlights}/>
+            <Route exact path={`/UserSelectedFlights/${id}`} component={UserSelectedFlights}/>
             <Route exact path='/UserFlightDetails/:id' component={UserFlightDetails}/>
         </>
     );

@@ -10,7 +10,7 @@ class UseravailableFlights extends Component {
     this.state = {
       selectedFlights:[],
       flights: [],
-      flights2: []
+      flights2: [],
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -32,10 +32,14 @@ class UseravailableFlights extends Component {
 
   componentDidMount() {
     const  {state}  = this.props.location
+    
+    
     const Cabin = state.Cabin
     const Adults = state.Adults
     const Children = state.Children
-    console.log("State "+state)
+    console.log("State "+ state)
+
+
 
     if(state.from==="" && state.to==="" && state.departure==="" && state.arrival===""){
       var from2 = "";
@@ -91,11 +95,13 @@ class UseravailableFlights extends Component {
       Cabin: Cabin2,
       Adults: Adults2,
       Children: Children2
-  };
+    };
     console.log("this is data: ");
     console.log(data);
+    const  {id}  = this.props.location
+    console.log("id "+ id)
     axios
-      .post('http://localhost:8000/api/FlightController/availableFlights',  data)
+      .post('http://localhost:8000/api/FlightController/availableFlights/',  data)
       .then(res => {
         this.setState({
           flights: res.data,
@@ -106,7 +112,7 @@ class UseravailableFlights extends Component {
         })
 
     axios
-      .post('http://localhost:8000/api/FlightController/availableFlights', data2)
+      .post('http://localhost:8000/api/FlightController/availableFlights/', data2)
       .then(res => {
         this.setState({
           flights2: res.data,
@@ -121,7 +127,7 @@ class UseravailableFlights extends Component {
 
   render() {
     const  {state}  = this.props.location
-
+    const  {id}  = this.props.location
     const Cabin = state.Cabin
     const Adults = state.Adults
     const Children = state.Children
@@ -201,7 +207,7 @@ class UseravailableFlights extends Component {
             </table>
           </div>
           <div className="col-md-11">
-              <Link to={{pathname:`/UserSelectedFlights`, state:data.selectedFlights, cabin:Cabin, adults:Adults, children: Children}} className="btn btn-outline-warning float-right">
+              <Link to={{pathname:`/UserSelectedFlights/${id}`, state:data.selectedFlights, cabin:Cabin, adults:Adults, children: Children}} className="btn btn-outline-warning float-right">
                 Show Selected flights
               </Link>
               <br />

@@ -53,16 +53,16 @@ const App = props => {
           <Route exact path='/Login' component={Login} />
           <Route exact path='/Register' component={Register} />
           <div>
-            <Route exact path='/User' component={User} />
-            <Route exact path='/Account' component={(Account, UserNavbar)} />
+            <Route exact path='/User/:id' component={User} />
+            <Route exact path='/Account/:id' component={(Account, UserNavbar)} />
             <Route exact path='/UpdateUserInfo/:id' component={(UpdateUserInfo, UserNavbar)} />
             <Route exact path='/UserFlightDetails/:id' component={(UserFlightDetails, UserNavbar)} />
-            <Route exact path='/UserSelectedFlights' component={(UserSelectedFlights, UserNavbar)} />
-            <Route exact path='/UseravailableFlights' component={(UseravailableFlights, UserNavbar)} />
-            <Route exact path='/ReservedFlights' component={(UserReservedFlights, UserNavbar)} />
+            <Route exact path='/UserSelectedFlights/:id' component={(UserSelectedFlights, UserNavbar)} />
+            <Route exact path='/UseravailableFlights/:id' component={(UseravailableFlights, UserNavbar)} />
+            <Route exact path='/ReservedFlights/:id' component={(UserReservedFlights, UserNavbar)} />
 
 
-            <Route exact path='/Admin' component={admin} />
+            <Route exact path='/Admin/:id' component={admin} />
             <Route exact path='/show-flights' component={(ShowFlightsList, Navbar)} />
             <Route exact path='/SearchFlight' component={(SearchFlight, Navbar)} />
             <Route exact path='/create-flight' component={(CreateFlight, Navbar)} />
