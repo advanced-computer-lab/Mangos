@@ -18,7 +18,7 @@ const port = process.env.PORT || 8000;
 const router = express.Router()
 
 
-connectDB();
+//connectDB();
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));

@@ -22,7 +22,7 @@ npm install
 
 ## Running Back-End server
 ```bash
-cd Mangos
+cd Mangos\srcs
 node app
 ```
 ## Running Front-End server

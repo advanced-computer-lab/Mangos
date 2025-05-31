@@ -2,6 +2,5 @@
 {
     "mongoURI":
     "mongodb+srv://TestUser:TestPass@cluster0.usmt0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-
-  }
+}
   

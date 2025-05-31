@@ -1,165 +1,179 @@
 import React, { Component } from 'react';
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
-import { BrowserRouter as Router, Route, Switch,Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from '../../images/Logo.svg';
 import {
-    Nav,
-    NavLink,
-    Bars,
-    NavMenu,
-    NavBtnLink,
-    NavBtn
-}from './NavbarElements';
+  Nav,
+  NavLink,
+  Bars,
+  NavBtn,
+  NavBtnLink
+} from './NavbarElements';
 
-const CabinOpt = ["Economy Class", "Business Class", "First Class"]
-const AdultOption = ["1","2","3","4","5","6","7","8","9"];
-const ChildOption = ["0","1","2","3","4","5","6","7","8"]
-     
-class HomeNavbar extends Component{
-    constructor() {
-        super();
-        this.state = {
-            from: '',
-            to:'',
-            departure: '',
-            arrival: '',
-            Cabin: 'Economy Class',
-            Adults:'1',
-            Children:'0'
-        };
+const CabinOptions = ["Economy Class", "Business Class", "First Class"];
+const AdultOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const ChildOptions = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+
+class HomeNavbar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      from: '',
+      to: '',
+      departure: '',
+      arrival: '',
+      Cabin: 'Economy Class',
+      Adults: '1',
+      Children: '0',
+      dateError: ''
+    };
+  }
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value }, () => {
+      const { departure, arrival } = this.state;
+      if (departure && arrival) {
+        const dep = new Date(departure);
+        const arr = new Date(arrival);
+        if (dep >= arr) {
+          this.setState({ dateError: "Departure must be before arrival" });
+        } else {
+          this.setState({ dateError: "" });
+        }
       }
-      handleChange = e =>{
-        this.setState({Cabin:e.target.value});
-      };
-      handleChange1 = e =>{
-        this.setState({Adults:e.target.value});
-      };
-      handleChange2 = e =>{
-        this.setState({Children:e.target.value});
-      };
+    });
+  };
 
-      onChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
-      };
-    
-      onSubmit = e => {
-        e.preventDefault();
-        const data = this.state;
-      };
-    
-    render(){
-        const data = this.state;
-        return(
-            <div className='HomePage'>
-            <Nav>
-                <NavLink to="/">
-                    <img src={Logo} 
-                    width = '120' height = '120' alt='Logo'/>
-                </NavLink>
-                <Bars />
-                
-                <NavBtn>
-                    <NavBtnLink to='/Login'>SignIn</NavBtnLink>
-                </NavBtn>
-            </Nav>
-                <div className="SearchFlight">
-                <div className="container">
-                <div className="row">
-                    <div className="col-md-8 m-auto">
-                    <br />
-                    <h1 className="display-4 text-center">Search Flights</h1>
-                    <p className="lead text-center">
-                    <b>Round trip</b>
-                    </p>
+  render() {
+    const { from, to, departure, arrival, Cabin, Adults, Children, dateError } = this.state;
 
-                    <form noValidate onSubmit={this.onSubmit}>
-                        <div><h3>where and when</h3></div>
-                        <div>From: </div>
-                        <div className='form-group'>
-                        <input
-                            type='text'
-                            placeholder='From'
-                            name='from'
-                            className='form-control'
-                            value={this.state.from}
-                            onChange={this.onChange}
-                        />
-                        </div>
-                        <div>To: </div>
-                        <div className='form-group'>
-                        <input
-                            type='text'
-                            placeholder='To'
-                            name='to'
-                            className='form-control'
-                            value={this.state.to}
-                            onChange={this.onChange}
-                        />
-                        </div>
-                        <div>Departure Time: </div>
-                        <div className='form-group'>
-                        <input
-                            type='date'
-                            placeholder='Departure'
-                            name='departure'
-                            className='form-control'
-                            value={this.state.departure}
-                            onChange={this.onChange}
-                        />
-                        </div>
-                        <div>Arrival Time: </div>
-                        <div className='form-group'>
-                        <input
-                            type='date'
-                            placeholder='Arrival'
-                            name='arrival'
-                            className='form-control'
-                            value={this.state.arrival}
-                            onChange={this.onChange}
-                        />
-                        </div>
-                        <div>Cabin: </div>
-                        <div className="select-container">
-                        <select value={this.state.Cabin} onChange={this.handleChange}>
-                        {CabinOpt.map((option) => (
-                            <option value={option}>{option}</option>
-                        ))}
-                        </select>
-                        </div>
-                        <hr/>
-                        <div><h3>Passengers</h3></div>
-                        <div>Adults: </div>
-                        <div className="select-container">
-                        <select value={this.state.Adults} onChange={this.handleChange1}>
-                        {AdultOption.map((option) => (
-                            <option value={option}>{option}</option>
-                        ))}
-                        </select>
-                        </div>
+    return (
+      <div className='HomePage'>
+        <Nav>
+          <NavLink to="/">
+            <img src={Logo} width='120' height='120' alt='Logo' />
+          </NavLink>
+          <Bars />
+          <NavBtn>
+            <NavBtnLink to='/Login'>Sign In</NavBtnLink>
+          </NavBtn>
+        </Nav>
 
-                        <div>Children: </div>                        
-                        <div className="select-container">
-                        <select value={this.state.Children} onChange={this.handleChange2}>
-                        {ChildOption.map((option) => (
-                            <option value={option}>{option}</option>
-                        ))}
-                        </select>
-                        </div>
-                        <br/>
-                        <br/>
+        <div className="SearchFlight">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8 m-auto">
+                <br />
+                <h1 className="display-4 text-center">Search Flights</h1>
+                <p className="lead text-center"><b>Round trip</b></p>
 
-                        <Link to={{pathname:`/availableFlights`, state: data}}  className="btn btn-outline-info btn-lg btn-block">
-                            Search
-                        </Link>
-                        
-                    </form>
-                </div>
-                </div>
-                </div>
+                <form noValidate>
+                  <h3>Where and When</h3>
+
+                  <div>From:</div>
+                  <input
+                    type="text"
+                    name="from"
+                    className="form-control"
+                    placeholder="From"
+                    value={from}
+                    onChange={this.handleChange}
+                  />
+
+                  <div>To:</div>
+                  <input
+                    type="text"
+                    name="to"
+                    className="form-control"
+                    placeholder="To"
+                    value={to}
+                    onChange={this.handleChange}
+                  />
+
+                  <div>Departure Time:</div>
+                  <input
+                    type="date"
+                    name="departure"
+                    className="form-control"
+                    value={departure}
+                    onChange={this.handleChange}
+                  />
+
+                  <div>Arrival Time:</div>
+                  <input
+                    type="date"
+                    name="arrival"
+                    className="form-control"
+                    value={arrival}
+                    onChange={this.handleChange}
+                  />
+
+                  {dateError && (
+                    <div style={{ color: 'red', marginTop: '5px' }}>
+                      {dateError}
+                    </div>
+                  )}
+
+                  <div>Cabin:</div>
+                  <select
+                    name="Cabin"
+                    className="form-control"
+                    value={Cabin}
+                    onChange={this.handleChange}
+                  >
+                    {CabinOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+
+                  <hr />
+                  <h3>Passengers</h3>
+
+                  <div>Adults:</div>
+                  <select
+                    name="Adults"
+                    className="form-control"
+                    value={Adults}
+                    onChange={this.handleChange}
+                  >
+                    {AdultOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+
+                  <div>Children:</div>
+                  <select
+                    name="Children"
+                    className="form-control"
+                    value={Children}
+                    onChange={this.handleChange}
+                  >
+                    {ChildOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+
+                  <br /><br />
+                  <Link
+                    to={{
+                      pathname: '/availableFlights',
+                      state: this.state
+                    }}
+                    className={`btn btn-outline-info btn-lg btn-block ${dateError ? 'disabled' : ''}`}
+                    onClick={(e) => {
+                      if (dateError) e.preventDefault();
+                    }}
+                  >
+                    Search
+                  </Link>
+                </form>
+              </div>
             </div>
-            </div>
-        )
-    }
-};
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
 export default HomeNavbar;
